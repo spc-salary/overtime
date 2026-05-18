@@ -3,62 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نموذج الإضافي — مديرية غاز جنوب المنطقة الوسطى</title>
+  <title>حاسبة الإضافي — مديرية غاز جنوب المنطقة الوسطى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #eef2f7;
-      --surface: #ffffff;
-      --surface2: #f5f7fb;
-      --border: #dde3ed;
-      --border-hov: #b8c7de;
-      --text: #0f172a;
-      --text2: #374151;
-      --text3: #6b7280;
-      --primary: #1d5fa6;
-      --primary-dark: #154a85;
-      --primary-mid: #2474c0;
-      --primary-light: #dbeafe;
-      --primary-glow: rgba(29,95,166,.18);
-      --accent: #0d9488;
-      --accent-light: #ccfbf1;
-      --warning: #d97706;
-      --warning-light: #fef3c7;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-      --shadow: 0 4px 16px rgba(15,23,42,.07), 0 1px 4px rgba(15,23,42,.05);
-      --shadow-hov: 0 12px 32px rgba(15,23,42,.11), 0 4px 10px rgba(15,23,42,.07);
-      --shadow-card: 0 0 0 1px rgba(15,23,42,.04), 0 4px 16px rgba(15,23,42,.07);
-      --radius: 16px;
-      --radius-sm: 10px;
-      --radius-xs: 7px;
-      --transition: .22s cubic-bezier(.4,0,.2,1);
+      --bg:            #edf1f7;
+      --surface:       #ffffff;
+      --surface2:      #f4f7fb;
+      --border:        #dce3ef;
+      --border-hov:    #b4c5dc;
+      --text:          #0d1526;
+      --text2:         #364153;
+      --text3:         #6b7694;
+      --primary:       #1a5ea8;
+      --primary-d:     #134a87;
+      --primary-m:     #2471c8;
+      --primary-l:     #dbeafe;
+      --primary-glow:  rgba(26,94,168,.16);
+      --accent:        #0a9280;
+      --accent-l:      #d0faf4;
+      --warning:       #d97706;
+      --warning-l:     #fef3c7;
+      --sh-xs:  0 1px 2px rgba(13,21,38,.06);
+      --sh-sm:  0 2px 8px rgba(13,21,38,.07), 0 1px 2px rgba(13,21,38,.04);
+      --sh-md:  0 6px 20px rgba(13,21,38,.08), 0 2px 6px rgba(13,21,38,.05);
+      --sh-lg:  0 14px 40px rgba(13,21,38,.12), 0 4px 12px rgba(13,21,38,.07);
+      --r:    16px;
+      --r-sm: 11px;
+      --r-xs:  7px;
+      --ease: cubic-bezier(.4,0,.2,1);
+      --t:  .22s;
       --font: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
     }
+
     .dark {
-      --bg: #0b0f1a;
-      --surface: #131929;
-      --surface2: #0f1421;
-      --border: #1e2a42;
-      --border-hov: #2e4060;
-      --text: #e2e8f5;
-      --text2: #94a3b8;
-      --text3: #546a8a;
-      --primary: #4a9de8;
-      --primary-dark: #3a86d0;
-      --primary-mid: #5aade8;
-      --primary-light: #0f2340;
-      --primary-glow: rgba(74,157,232,.2);
-      --accent: #14b8a6;
-      --accent-light: #042e2a;
-      --warning: #f59e0b;
-      --warning-light: #1c1500;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-      --shadow: 0 4px 16px rgba(0,0,0,.35);
-      --shadow-hov: 0 12px 32px rgba(0,0,0,.5);
-      --shadow-card: 0 0 0 1px rgba(255,255,255,.03), 0 4px 16px rgba(0,0,0,.35);
+      --bg:           #080d18;
+      --surface:      #101624;
+      --surface2:     #0c1220;
+      --border:       #1b2640;
+      --border-hov:   #2a3c5e;
+      --text:         #dde6f5;
+      --text2:        #8fa3c0;
+      --text3:        #4e6080;
+      --primary:      #4699e8;
+      --primary-d:    #357ed4;
+      --primary-m:    #56a8f0;
+      --primary-l:    #0e2240;
+      --primary-glow: rgba(70,153,232,.18);
+      --accent:       #12b8a6;
+      --accent-l:     #042c28;
+      --warning:      #f59e0b;
+      --warning-l:    #1a1200;
+      --sh-xs:  0 1px 2px rgba(0,0,0,.3);
+      --sh-sm:  0 2px 8px rgba(0,0,0,.3);
+      --sh-md:  0 6px 20px rgba(0,0,0,.4);
+      --sh-lg:  0 14px 40px rgba(0,0,0,.55);
     }
 
     html { scroll-behavior: smooth; }
@@ -70,225 +73,208 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      transition: background var(--transition), color var(--transition);
+      transition: background var(--t) var(--ease), color var(--t) var(--ease);
     }
 
-    /* subtle mesh background */
-    body::before {
+    /* ambient background blobs */
+    body::before, body::after {
       content: '';
-      position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background:
-        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(29,95,166,.07) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 10% 90%, rgba(13,148,136,.05) 0%, transparent 60%);
+      position: fixed; pointer-events: none; z-index: 0;
+      border-radius: 50%;
     }
-    .dark body::before {
-      background:
-        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(74,157,232,.06) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 50% at 10% 90%, rgba(20,184,166,.04) 0%, transparent 60%);
+    body::before {
+      width: 600px; height: 400px;
+      top: -100px; left: -120px;
+      background: radial-gradient(ellipse, rgba(26,94,168,.07) 0%, transparent 70%);
+    }
+    body::after {
+      width: 500px; height: 500px;
+      bottom: -80px; right: -80px;
+      background: radial-gradient(ellipse, rgba(10,146,128,.05) 0%, transparent 70%);
     }
 
-    /* ── HEADER ── */
+    /* ══════════════════════════════════
+       HEADER
+    ══════════════════════════════════ */
     .app-header {
-      background: linear-gradient(135deg, #0b3d7a 0%, #1d5fa6 45%, #2881d4 100%);
-      box-shadow: 0 2px 24px rgba(11,61,122,.4), 0 1px 0 rgba(255,255,255,.07) inset;
+      background: linear-gradient(135deg, #0a3568 0%, #1a5ea8 50%, #2679d4 100%);
+      box-shadow: 0 2px 0 rgba(255,255,255,.06) inset, var(--sh-md);
       position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(12px);
+      overflow: hidden;
     }
-    .dark .app-header {
-      background: linear-gradient(135deg, #060d1c 0%, #0b2040 45%, #0f3262 100%);
-      box-shadow: 0 2px 24px rgba(0,0,0,.6), 0 1px 0 rgba(255,255,255,.04) inset;
+    .app-header::before {
+      /* subtle mesh shimmer */
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,.018) 40px,
+          rgba(255,255,255,.018) 41px
+        );
     }
-    /* header shimmer line */
     .app-header::after {
       content: '';
       position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.18) 50%, transparent 100%);
     }
+    .dark .app-header {
+      background: linear-gradient(135deg, #040b18 0%, #0a1f3d 50%, #0e2e5a 100%);
+    }
+
     .header-inner {
-      max-width: 960px; margin: 0 auto; padding: 14px 24px;
+      max-width: 860px; margin: 0 auto;
+      padding: 15px 24px;
       display: flex; align-items: center; gap: 14px;
-      position: relative;
+      position: relative; z-index: 1;
     }
+
     .header-logo {
       flex-shrink: 0;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
-      transition: transform var(--transition);
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,.35));
+      transition: transform var(--t) var(--ease);
+      cursor: default;
     }
-    .header-logo:hover { transform: scale(1.06) rotate(-3deg); }
+    .header-logo:hover { transform: scale(1.08) rotate(-4deg); }
     .header-logo svg { display: block; }
-    .header-text { flex: 1; }
+
+    .header-text { flex: 1; min-width: 0; }
     .header-title {
-      font-size: clamp(.92rem, 2.8vw, 1.25rem);
+      font-size: clamp(.92rem, 2.8vw, 1.28rem);
       font-weight: 900; color: #fff; line-height: 1.25;
-      text-shadow: 0 1px 4px rgba(0,0,0,.25);
-      letter-spacing: -.01em;
+      text-shadow: 0 1px 6px rgba(0,0,0,.28);
+      letter-spacing: -.015em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .header-sub {
-      font-size: .75rem; color: rgba(255,255,255,.65);
-      margin-top: 2px; font-weight: 500;
+      font-size: .74rem; color: rgba(255,255,255,.62);
+      margin-top: 3px; font-weight: 500; letter-spacing: .01em;
     }
-    .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 
-    .icon-btn {
-      width: 38px; height: 38px; border-radius: 50%;
+    .dark-toggle {
+      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%;
       border: 1.5px solid rgba(255,255,255,.22);
       background: rgba(255,255,255,.1);
       color: #fff; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: all var(--transition); flex-shrink: 0;
-      backdrop-filter: blur(6px);
+      transition: all var(--t) var(--ease);
+      backdrop-filter: blur(8px);
     }
-    .icon-btn:hover {
+    .dark-toggle:hover {
       background: rgba(255,255,255,.22);
       border-color: rgba(255,255,255,.5);
-      transform: scale(1.08);
-      box-shadow: 0 0 0 4px rgba(255,255,255,.08);
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 0 0 5px rgba(255,255,255,.07);
     }
+    .dark-toggle:active { transform: scale(.96); }
 
-    .print-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 7px 16px; border-radius: 100px;
-      border: 1.5px solid rgba(255,255,255,.28);
-      background: rgba(255,255,255,.12);
-      color: #fff; cursor: pointer;
-      font-size: .82rem; font-weight: 700; font-family: var(--font);
-      transition: all var(--transition); backdrop-filter: blur(6px);
-      letter-spacing: .01em;
-    }
-    .print-btn:hover {
-      background: rgba(255,255,255,.24);
-      border-color: rgba(255,255,255,.55);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0,0,0,.2);
-    }
-
-    /* ── MAIN ── */
+    /* ══════════════════════════════════
+       MAIN
+    ══════════════════════════════════ */
     .main-content {
-      flex: 1; max-width: 960px; width: 100%; margin: 0 auto;
-      padding: 32px 20px 56px;
+      flex: 1; max-width: 860px; width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px 52px;
       display: flex; flex-direction: column; gap: 22px;
+      position: relative; z-index: 1;
     }
 
-    /* ── SECTION LABEL ── */
-    .section-label {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: -8px;
-    }
-    .section-label span {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: .72rem; font-weight: 800;
-      color: var(--primary);
-      background: var(--primary-light);
-      padding: 3px 12px 3px 10px;
-      border-radius: 100px;
-      border: 1px solid rgba(29,95,166,.15);
-      letter-spacing: .04em;
-      white-space: nowrap;
-      transition: background var(--transition), color var(--transition);
-    }
-    .dark .section-label span {
-      border-color: rgba(74,157,232,.18);
-    }
-    .section-label::before {
-      content: '';
-      display: block; flex: 1; height: 1px;
-      background: linear-gradient(to left, var(--border), transparent);
-      order: 1;
-    }
-
-    /* ── CARDS ── */
+    /* ══════════════════════════════════
+       CARD
+    ══════════════════════════════════ */
     .card {
       background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-card);
+      border-radius: var(--r);
+      box-shadow: var(--sh-sm);
       border: 1px solid var(--border);
       overflow: hidden;
-      transition: background var(--transition), border-color var(--transition),
-                  box-shadow var(--transition), transform var(--transition);
+      transition:
+        background var(--t) var(--ease),
+        border-color var(--t) var(--ease),
+        box-shadow var(--t) var(--ease),
+        transform var(--t) var(--ease);
+      animation: fadeUp .48s var(--ease) both;
     }
     .card:hover {
       border-color: var(--border-hov);
-      box-shadow: var(--shadow-hov);
-      transform: translateY(-1px);
+      box-shadow: var(--sh-lg);
+      transform: translateY(-2px);
     }
-
-    /* card entrance animation */
-    .card { animation: cardIn .5s var(--transition) both; }
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(14px) scale(.99); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px) scale(.985); }
       to   { opacity: 1; transform: translateY(0) scale(1); }
     }
+    .results-section .card { animation: none; }
 
     .card-header {
       display: flex; align-items: center; gap: 13px;
-      padding: 18px 24px 15px;
+      padding: 19px 24px 15px;
       border-bottom: 1px solid var(--border);
-      background: linear-gradient(to bottom, var(--surface2), var(--surface));
-      transition: background var(--transition), border-color var(--transition);
+      background: linear-gradient(180deg, var(--surface2) 0%, var(--surface) 100%);
+      transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
     }
+
     .card-icon {
-      width: 40px; height: 40px; border-radius: 11px;
+      width: 40px; height: 40px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      transition: transform var(--transition), box-shadow var(--transition);
+      transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
     }
-    .card-icon           { background: linear-gradient(135deg, var(--primary-light), rgba(29,95,166,.06)); color: var(--primary); box-shadow: 0 2px 8px rgba(29,95,166,.15); }
-    .card-icon.accent    { background: linear-gradient(135deg, var(--accent-light),  rgba(13,148,136,.06)); color: var(--accent);  box-shadow: 0 2px 8px rgba(13,148,136,.15); }
-    .card-icon.warn      { background: linear-gradient(135deg, var(--warning-light), rgba(217,119,6,.06));  color: var(--warning); box-shadow: 0 2px 8px rgba(217,119,6,.15); }
-    .card:hover .card-icon { transform: scale(1.08) rotate(-4deg); }
+    .card-icon         { background: linear-gradient(135deg, var(--primary-l), rgba(26,94,168,.05)); color: var(--primary); box-shadow: 0 3px 10px rgba(26,94,168,.14); }
+    .card-icon.accent  { background: linear-gradient(135deg, var(--accent-l),  rgba(10,146,128,.05)); color: var(--accent);  box-shadow: 0 3px 10px rgba(10,146,128,.14); }
+    .card:hover .card-icon { transform: rotate(-6deg) scale(1.1); }
 
-    .card-title { font-size: .98rem; font-weight: 800; color: var(--text); letter-spacing: -.01em; transition: color var(--transition); }
-    .card-subtitle { font-size: .73rem; color: var(--text3); margin-top: 2px; font-weight: 500; }
+    .card-title {
+      font-size: 1.02rem; font-weight: 800;
+      color: var(--text); letter-spacing: -.015em;
+      transition: color var(--t) var(--ease);
+    }
 
-    /* ── FORM GRID ── */
+    /* ══════════════════════════════════
+       FORM GRID
+    ══════════════════════════════════ */
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px; padding: 22px 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px; padding: 24px;
     }
-    .form-grid.two  { grid-template-columns: 1fr 1fr; }
-    .form-grid.four { grid-template-columns: repeat(4, 1fr); }
-    @media (max-width: 700px) {
-      .form-grid        { grid-template-columns: 1fr 1fr; gap: 13px; padding: 16px; }
-      .form-grid.four   { grid-template-columns: 1fr 1fr; }
-      .form-grid.three  { grid-template-columns: 1fr; }
-      .card-header      { padding: 14px 16px 13px; }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
+      .card-header { padding: 15px 16px 13px; }
     }
-    @media (max-width: 480px) {
-      .form-grid     { grid-template-columns: 1fr; }
-      .form-grid.two { grid-template-columns: 1fr; }
-      .form-grid.four{ grid-template-columns: 1fr 1fr; }
-    }
-    .field-group { display: flex; flex-direction: column; gap: 7px; }
-    .field-group.span2 { grid-column: span 2; }
-    .field-group.span3 { grid-column: span 3; }
 
+    .field-group { display: flex; flex-direction: column; gap: 7px; }
     .field-label {
-      font-size: .76rem; font-weight: 700; color: var(--text3);
-      display: flex; align-items: center; gap: 6px;
-      transition: color var(--transition);
-      user-select: none; letter-spacing: .02em;
+      font-size: .77rem; font-weight: 700;
+      color: var(--text3);
+      display: flex; align-items: center; gap: 7px;
+      transition: color var(--t) var(--ease);
+      user-select: none; letter-spacing: .025em;
     }
     .field-group:focus-within .field-label { color: var(--primary); }
 
     .label-dot {
       width: 5px; height: 5px; border-radius: 50%;
       background: var(--primary); flex-shrink: 0;
-      transition: background var(--transition), transform var(--transition);
+      transition: transform var(--t) var(--ease), background var(--t) var(--ease);
     }
-    .field-group:focus-within .label-dot { transform: scale(1.4); }
+    .field-group:focus-within .label-dot { transform: scale(1.5); }
 
-    .req { color: #e53e3e; font-size: .68rem; margin-right: 1px; }
-
-    /* ── INPUTS ── */
+    /* inputs */
     .form-input, .form-select {
-      width: 100%; padding: 10px 14px;
-      font-family: var(--font); font-size: .88rem; font-weight: 600;
+      width: 100%; padding: 11px 14px;
+      font-family: var(--font); font-size: .9rem; font-weight: 600;
       color: var(--text); background: var(--surface2);
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
       outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition),
-                  background var(--transition), transform var(--transition);
+      transition:
+        border-color var(--t) var(--ease),
+        box-shadow var(--t) var(--ease),
+        background var(--t) var(--ease),
+        transform var(--t) var(--ease);
       appearance: none; -webkit-appearance: none;
     }
     .form-input:hover, .form-select:hover {
@@ -298,375 +284,353 @@
     .form-input:focus, .form-select:focus {
       border-color: var(--primary);
       background: var(--surface);
-      box-shadow: 0 0 0 4px var(--primary-glow), var(--shadow-sm);
+      box-shadow: 0 0 0 4px var(--primary-glow), var(--sh-xs);
       transform: translateY(-1px);
     }
     .form-input::placeholder { color: var(--text3); font-weight: 400; }
 
     .select-wrapper { position: relative; }
-    .select-wrapper .form-select { padding-left: 32px; cursor: pointer; }
+    .select-wrapper .form-select { padding-left: 36px; cursor: pointer; }
     .select-icon {
-      position: absolute; left: 11px; top: 50%;
-      transform: translateY(-50%); color: var(--text3); pointer-events: none;
-      transition: color var(--transition);
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3); pointer-events: none;
+      transition: color var(--t) var(--ease);
     }
     .field-group:focus-within .select-icon { color: var(--primary); }
 
-    /* ── CEILINGS ── */
+    /* ══════════════════════════════════
+       CEILINGS TABLE
+    ══════════════════════════════════ */
     .ceilings-table {
-      margin: 0 24px 14px;
+      margin: 0 24px 8px;
       background: var(--surface2);
-      border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 11px 15px;
-      transition: background var(--transition), border-color var(--transition);
+      border: 1px solid var(--border); border-radius: var(--r-sm);
+      padding: 11px 16px;
+      transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
     }
-    @media (max-width: 480px) { .ceilings-table { margin: 0 16px 12px; } }
+    @media (max-width: 580px) { .ceilings-table { margin: 0 16px 8px; } }
 
     .ceilings-toggle {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 8px; background: none; border: none; cursor: pointer; padding: 0; width: 100%;
+      gap: 8px; background: none; border: none;
+      cursor: pointer; padding: 0; width: 100%;
     }
     .ceilings-toggle:hover .ceilings-title { color: var(--primary); }
     .ceilings-title {
       font-size: .71rem; font-weight: 800; color: var(--text3);
-      letter-spacing: .04em; transition: color var(--transition);
+      letter-spacing: .04em; text-transform: uppercase;
+      transition: color var(--t) var(--ease);
     }
-    .ceilings-arrow { color: var(--text3); transition: transform .3s cubic-bezier(.4,0,.2,1), color var(--transition); flex-shrink: 0; }
+    .ceilings-arrow {
+      color: var(--text3);
+      transition: transform .3s var(--ease), color var(--t) var(--ease);
+      flex-shrink: 0;
+    }
     .ceilings-arrow.open { transform: rotate(180deg); color: var(--primary); }
 
     .ceilings-row { margin-top: 11px; display: flex; gap: 7px; flex-wrap: wrap; }
     .ceiling-cell {
-      flex: 1; min-width: 70px; background: var(--surface);
-      border: 1.5px solid var(--border); border-radius: var(--radius-xs); padding: 8px 9px;
-      text-align: center; transition: all var(--transition); cursor: default;
+      flex: 1; min-width: 78px; background: var(--surface);
+      border: 1.5px solid var(--border); border-radius: var(--r-xs);
+      padding: 8px 10px; text-align: center;
+      transition: all var(--t) var(--ease); cursor: default;
     }
-    .ceiling-cell:hover { border-color: var(--border-hov); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+    .ceiling-cell:hover {
+      border-color: var(--border-hov);
+      transform: translateY(-2px);
+      box-shadow: var(--sh-sm);
+    }
     .ceiling-cell.active {
       border-color: var(--primary);
-      background: var(--primary-light);
+      background: var(--primary-l);
       box-shadow: 0 0 0 3px var(--primary-glow);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
-    .ceiling-cat { font-size: .67rem; font-weight: 800; color: var(--text3); margin-bottom: 3px; transition: color var(--transition); letter-spacing: .03em; }
+    .ceiling-cat {
+      font-size: .68rem; font-weight: 800; color: var(--text3);
+      margin-bottom: 3px; transition: color var(--t) var(--ease);
+      letter-spacing: .03em;
+    }
     .ceiling-cell.active .ceiling-cat { color: var(--primary); }
-    .ceiling-val { font-size: .75rem; font-weight: 800; color: var(--text2); direction: ltr; transition: color var(--transition); }
+    .ceiling-val {
+      font-size: .75rem; font-weight: 800; color: var(--text2);
+      direction: ltr; transition: color var(--t) var(--ease);
+    }
     .ceiling-cell.active .ceiling-val { color: var(--primary); }
 
-    /* ── BUTTONS ── */
-    .btn-row { display: flex; gap: 11px; padding: 4px 24px 24px; flex-wrap: wrap; }
-    @media (max-width: 480px) { .btn-row { padding: 4px 16px 18px; } }
+    /* ══════════════════════════════════
+       BUTTONS
+    ══════════════════════════════════ */
+    .btn-row {
+      display: flex; gap: 12px;
+      padding: 4px 24px 24px; flex-wrap: wrap;
+    }
+    @media (max-width: 580px) { .btn-row { padding: 4px 16px 18px; } }
 
-    .btn-primary, .btn-secondary, .btn-danger {
+    .btn-primary, .btn-secondary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 26px; border-radius: var(--radius-sm);
-      font-family: var(--font); font-size: .9rem; font-weight: 800;
+      padding: 12px 28px; border-radius: var(--r-sm);
+      font-family: var(--font); font-size: .92rem; font-weight: 800;
       cursor: pointer; border: none;
-      transition: all var(--transition);
-      flex: 1; min-width: 120px; justify-content: center;
-      position: relative; overflow: hidden; letter-spacing: .01em;
+      transition: all var(--t) var(--ease);
+      flex: 1; min-width: 140px; justify-content: center;
+      position: relative; overflow: hidden;
+      letter-spacing: .01em;
     }
-    /* shine sweep on hover */
-    .btn-primary::after, .btn-secondary::after {
+    /* shine sweep */
+    .btn-primary::before, .btn-secondary::before {
       content: '';
-      position: absolute; top: 0; right: -120%;
-      width: 80%; height: 100%;
-      background: linear-gradient(105deg, transparent 20%, rgba(255,255,255,.22) 50%, transparent 80%);
-      transition: right .5s ease;
-      pointer-events: none;
+      position: absolute; top: 0; right: -100%;
+      width: 70%; height: 100%;
+      background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.24) 50%, transparent 80%);
+      transition: right .55s var(--ease); pointer-events: none;
     }
-    .btn-primary:hover::after { right: 120%; }
-    .btn-secondary:hover::after { right: 120%; }
+    .btn-primary:hover::before  { right: 130%; }
+    .btn-secondary:hover::before { right: 130%; }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, var(--primary-m) 0%, var(--primary-d) 100%);
       color: #fff;
-      box-shadow: 0 4px 16px rgba(29,95,166,.35), 0 1px 0 rgba(255,255,255,.15) inset;
+      box-shadow: 0 4px 16px rgba(26,94,168,.38), 0 1px 0 rgba(255,255,255,.12) inset;
     }
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(29,95,166,.45), 0 1px 0 rgba(255,255,255,.15) inset;
+      box-shadow: 0 8px 28px rgba(26,94,168,.48), 0 1px 0 rgba(255,255,255,.12) inset;
     }
-    .btn-primary:active { transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(26,94,168,.3); }
 
     .btn-secondary {
       background: var(--surface); color: var(--text2);
       border: 1.5px solid var(--border);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--sh-xs);
     }
     .btn-secondary:hover {
       background: var(--surface2); color: var(--text);
       border-color: var(--border-hov);
-      transform: translateY(-2px); box-shadow: var(--shadow);
+      transform: translateY(-2px); box-shadow: var(--sh-sm);
     }
+    .btn-secondary:active { transform: translateY(0); }
 
-    .btn-danger {
-      background: #fff1f0; color: #c53030;
-      border: 1.5px solid #fed7d7;
-      flex: 0; min-width: auto; padding: 11px 18px;
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-danger:hover { background: #fed7d7; transform: translateY(-2px); }
-    .dark .btn-danger { background: #2d1515; color: #fc8181; border-color: #742a2a; }
-    .dark .btn-danger:hover { background: #742a2a; }
-
-    /* ── RESULTS ── */
+    /* ══════════════════════════════════
+       RESULTS SECTION
+    ══════════════════════════════════ */
     .results-section {
       display: flex; flex-direction: column; gap: 22px;
-      opacity: 0; transform: translateY(22px);
-      transition: opacity .5s cubic-bezier(.4,0,.2,1), transform .5s cubic-bezier(.4,0,.2,1);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
     }
     .results-section.visible { opacity: 1; transform: translateY(0); }
 
-    /* Employee meta strip */
-    .result-meta {
-      padding: 14px 24px;
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(to bottom, var(--surface2), var(--surface));
-      display: flex; flex-wrap: wrap; gap: 22px;
-      transition: background var(--transition), border-color var(--transition);
-    }
-    .result-meta-item { display: flex; flex-direction: column; gap: 3px; }
-    .result-meta-label { font-size: .66rem; font-weight: 700; color: var(--text3); letter-spacing: .05em; text-transform: uppercase; }
-    .result-meta-value { font-size: .84rem; font-weight: 700; color: var(--text); }
-
-    /* Result boxes */
+    /* ── Result boxes ── */
     .result-boxes { display: flex; flex-direction: column; }
+
     .result-box {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 24px; border-bottom: 1px solid var(--border);
+      padding: 20px 26px; border-bottom: 1px solid var(--border);
       background: var(--surface);
-      transition: background var(--transition), border-color var(--transition),
-                  padding-right var(--transition);
-      gap: 14px; position: relative;
+      transition:
+        background var(--t) var(--ease),
+        border-color var(--t) var(--ease),
+        padding-right var(--t) var(--ease);
+      gap: 16px; position: relative;
     }
-    .result-box::before {
+    /* left accent bar on hover */
+    .result-box::after {
       content: '';
-      position: absolute; right: 0; top: 15%; bottom: 15%;
-      width: 3px; border-radius: 0 3px 3px 0;
-      background: var(--primary);
-      opacity: 0;
-      transition: opacity var(--transition), top var(--transition), bottom var(--transition);
+      position: absolute; right: 0; top: 18%; bottom: 18%; width: 3px;
+      background: var(--primary); border-radius: 3px 0 0 3px;
+      opacity: 0; transform: scaleY(.4);
+      transition: opacity var(--t) var(--ease), transform var(--t) var(--ease);
     }
-    .result-box:hover::before { opacity: 1; top: 8%; bottom: 8%; }
+    .result-box:hover::after  { opacity: 1; transform: scaleY(1); }
+    .result-box.capped::after { background: var(--warning); }
+
     .result-box:last-of-type { border-bottom: none; }
-    .result-box:hover { background: var(--surface2); padding-right: 28px; }
-    .result-box.capped { background: var(--warning-light); }
-    .result-box.capped::before { background: var(--warning); }
-    .result-box.capped:hover { background: var(--warning-light); }
+    .result-box:hover { background: var(--surface2); padding-right: 30px; }
+    .result-box.capped       { background: var(--warning-l); }
+    .result-box.capped:hover { background: var(--warning-l); }
 
     .result-box-label {
       display: flex; align-items: center; gap: 11px;
-      font-size: .88rem; font-weight: 700; color: var(--text2); transition: color var(--transition);
+      font-size: .9rem; font-weight: 700; color: var(--text2);
+      transition: color var(--t) var(--ease);
     }
     .result-box:hover .result-box-label { color: var(--text); }
+
     .result-box-icon {
       width: 36px; height: 36px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: transform var(--transition);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform var(--t) var(--ease);
     }
-    .result-box-icon { background: linear-gradient(135deg, var(--primary-light), rgba(29,95,166,.05)); color: var(--primary); box-shadow: 0 2px 6px rgba(29,95,166,.12); }
-    .result-box.capped .result-box-icon { background: var(--warning-light); color: var(--warning); box-shadow: 0 2px 6px rgba(217,119,6,.15); }
-    .result-box:hover .result-box-icon { transform: scale(1.1) rotate(-5deg); }
+    .result-box-icon          { background: linear-gradient(135deg, var(--primary-l), rgba(26,94,168,.04)); color: var(--primary); box-shadow: 0 2px 8px rgba(26,94,168,.13); }
+    .result-box.capped .result-box-icon { background: var(--warning-l); color: var(--warning); box-shadow: 0 2px 8px rgba(217,119,6,.16); }
+    .result-box:hover .result-box-icon  { transform: scale(1.12) rotate(-6deg); }
 
     .cap-badge {
-      font-size: .61rem; background: var(--warning); color: #fff;
+      font-size: .63rem; background: var(--warning); color: #fff;
       padding: 2px 8px; border-radius: 100px; font-weight: 800;
-      box-shadow: 0 2px 6px rgba(217,119,6,.35);
+      box-shadow: 0 2px 6px rgba(217,119,6,.3);
     }
+
     .result-box-amount { display: flex; align-items: baseline; gap: 5px; direction: ltr; }
     .result-box-value {
-      font-size: 1.5rem; font-weight: 900; color: var(--primary);
-      transition: color var(--transition); line-height: 1;
+      font-size: 1.55rem; font-weight: 900; color: var(--primary);
+      transition: color var(--t) var(--ease); line-height: 1;
       letter-spacing: -.02em;
     }
-    .result-box-currency { font-size: .74rem; font-weight: 700; color: var(--text3); transition: color var(--transition); }
+    .result-box-currency {
+      font-size: .78rem; font-weight: 700; color: var(--text3);
+      transition: color var(--t) var(--ease);
+    }
 
+    /* ── Total box ── */
     .total-box {
-      background: linear-gradient(135deg, var(--primary-mid) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, var(--primary-m) 0%, var(--primary-d) 100%);
       padding: 22px 28px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px; position: relative; overflow: hidden;
     }
     .total-box::before {
       content: '';
-      position: absolute; top: -30px; left: -30px;
-      width: 120px; height: 120px; border-radius: 50%;
+      position: absolute; top: -40px; left: -40px;
+      width: 130px; height: 130px; border-radius: 50%;
       background: rgba(255,255,255,.06); pointer-events: none;
     }
     .total-box::after {
       content: '';
-      position: absolute; bottom: -20px; right: 40px;
-      width: 80px; height: 80px; border-radius: 50%;
+      position: absolute; bottom: -30px; right: 60px;
+      width: 90px; height: 90px; border-radius: 50%;
       background: rgba(255,255,255,.04); pointer-events: none;
     }
-    .total-label { font-size: .9rem; font-weight: 700; color: rgba(255,255,255,.8); position: relative; }
-    .total-value {
-      font-size: 1.9rem; font-weight: 900; color: #fff;
-      direction: ltr; letter-spacing: -.03em; position: relative;
-      text-shadow: 0 2px 8px rgba(0,0,0,.15);
+    .total-label {
+      font-size: .93rem; font-weight: 700;
+      color: rgba(255,255,255,.82); position: relative;
     }
-    .total-currency { font-size: .8rem; font-weight: 700; opacity: .75; margin-right: 6px; }
+    .total-value {
+      font-size: 1.85rem; font-weight: 900; color: #fff; direction: ltr;
+      letter-spacing: -.03em; position: relative;
+      text-shadow: 0 2px 10px rgba(0,0,0,.18);
+    }
+    .total-currency {
+      font-size: .82rem; font-weight: 700; opacity: .75; margin-right: 6px;
+    }
 
-    /* ── BREAKDOWN ── */
+    /* ══════════════════════════════════
+       BREAKDOWN
+    ══════════════════════════════════ */
     .breakdown-header-btn {
       display: flex; align-items: center; justify-content: space-between;
       width: 100%; background: none; border: none; cursor: pointer;
-      padding: 18px 24px 15px;
+      padding: 19px 24px 15px;
       border-bottom: 1px solid var(--border);
-      background: linear-gradient(to bottom, var(--surface2), var(--surface));
-      transition: background var(--transition), border-color var(--transition); gap: 12px;
+      background: linear-gradient(180deg, var(--surface2) 0%, var(--surface) 100%);
+      transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
+      gap: 12px;
     }
-    .breakdown-header-btn:hover { background: var(--primary-light); }
+    .breakdown-header-btn:hover { background: var(--primary-l); }
     .breakdown-header-inner { display: flex; align-items: center; gap: 12px; }
+
     .breakdown-toggle-arrow {
       color: var(--text3);
-      transition: transform .35s cubic-bezier(.4,0,.2,1), color var(--transition);
+      transition: transform .35s var(--ease), color var(--t) var(--ease);
       flex-shrink: 0;
     }
     .breakdown-toggle-arrow.open { transform: rotate(180deg); color: var(--primary); }
-    .breakdown-body { overflow: hidden; max-height: 0; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
-    .breakdown-body.open { max-height: 2200px; }
-    .breakdown-list { padding: 18px 24px 26px; display: flex; flex-direction: column; }
+
+    .breakdown-body {
+      overflow: hidden; max-height: 0;
+      transition: max-height .45s var(--ease);
+    }
+    .breakdown-body.open { max-height: 2400px; }
+
+    .breakdown-list {
+      padding: 18px 24px 26px;
+      display: flex; flex-direction: column;
+    }
+    @media (max-width: 580px) { .breakdown-list { padding: 12px 16px 18px; } }
 
     .breakdown-step {
-      display: flex; gap: 16px; padding: 18px 0;
-      border-bottom: 1px solid var(--border); transition: border-color var(--transition);
+      display: flex; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+      transition: border-color var(--t) var(--ease);
       position: relative;
     }
-    .breakdown-step:last-child { border-bottom: none; }
-    /* connector line */
-    .breakdown-step:not(:last-child)::after {
+    /* timeline connector */
+    .breakdown-step:not(:last-child)::before {
       content: '';
-      position: absolute; right: 15px; top: 52px; bottom: -18px;
-      width: 2px; background: linear-gradient(to bottom, var(--primary-light), transparent);
+      position: absolute; right: 16px; top: 50px; bottom: -18px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary-l), transparent);
+      pointer-events: none;
     }
+    .breakdown-step:last-child { border-bottom: none; }
     .breakdown-step.total-step {
-      background: linear-gradient(135deg, var(--primary-light), rgba(29,95,166,.03));
+      background: linear-gradient(135deg, var(--primary-l), rgba(26,94,168,.02));
       margin: 0 -24px; padding: 18px 24px;
-      border-radius: 0 0 var(--radius) var(--radius); border-bottom: none;
+      border-radius: 0 0 var(--r) var(--r); border-bottom: none;
     }
-    .breakdown-step.total-step::after { display: none; }
+    .breakdown-step.total-step::before { display: none; }
+    @media (max-width: 580px) {
+      .breakdown-step.total-step { margin: 0 -16px; padding: 18px 16px; }
+    }
 
     .step-num {
       width: 33px; height: 33px; border-radius: 50%;
-      background: var(--primary-light); color: var(--primary);
+      background: var(--primary-l); color: var(--primary);
       font-size: .85rem; font-weight: 900;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; margin-top: 2px;
-      transition: background var(--transition), color var(--transition), transform var(--transition);
-      border: 2px solid rgba(29,95,166,.12);
+      border: 2px solid rgba(26,94,168,.12);
       position: relative; z-index: 1;
+      transition: background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease);
     }
     .total-step .step-num {
-      background: linear-gradient(135deg, var(--primary-mid), var(--primary-dark));
+      background: linear-gradient(135deg, var(--primary-m), var(--primary-d));
       color: #fff; border-color: transparent;
-      box-shadow: 0 4px 12px rgba(29,95,166,.35);
+      box-shadow: 0 4px 14px rgba(26,94,168,.38);
     }
-    .breakdown-step:hover .step-num { transform: scale(1.1); }
+    .breakdown-step:hover .step-num { transform: scale(1.12); }
 
     .step-body { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-    .step-title { font-size: .89rem; font-weight: 800; color: var(--text); transition: color var(--transition); letter-spacing: -.01em; }
+    .step-title {
+      font-size: .9rem; font-weight: 800; color: var(--text);
+      transition: color var(--t) var(--ease); letter-spacing: -.01em;
+    }
     .step-eq {
-      font-size: .77rem; color: var(--text3);
+      font-size: .79rem; color: var(--text3); font-weight: 500;
       background: var(--surface2); padding: 5px 11px;
-      border-radius: var(--radius-xs); border-right: 3px solid var(--primary);
-      transition: all var(--transition); font-weight: 500;
-      opacity: .8;
+      border-radius: var(--r-xs); border-right: 3px solid var(--primary);
+      transition: all var(--t) var(--ease);
     }
     .step-val {
-      font-size: .83rem; color: var(--text2);
+      font-size: .84rem; color: var(--text2); font-weight: 500;
       direction: ltr; text-align: right; font-family: monospace;
-      transition: color var(--transition); letter-spacing: .01em;
+      transition: color var(--t) var(--ease);
     }
     .step-val strong { color: var(--primary); font-family: var(--font); font-weight: 800; }
-    .step-note { font-size: .73rem; color: var(--text3); font-style: italic; transition: color var(--transition); }
+    .step-note {
+      font-size: .75rem; color: var(--text3); font-style: italic;
+      transition: color var(--t) var(--ease);
+    }
 
-    /* ── SIGNATURE SECTION ── */
-    .sig-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; padding: 22px 24px 12px;
-    }
-    @media (max-width: 600px) { .sig-grid { grid-template-columns: 1fr; gap: 16px; } }
-
-    .sig-box {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      padding: 16px; border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-    }
-    .sig-box:hover { border-color: var(--border-hov); box-shadow: var(--shadow); transform: translateY(-2px); }
-    .sig-title {
-      font-size: .75rem; font-weight: 800; color: var(--text2);
-      text-align: center; transition: color var(--transition);
-      letter-spacing: .02em;
-    }
-    .sig-name-input {
-      width: 100%; text-align: center;
-      padding: 7px 10px; font-family: var(--font); font-size: .85rem; font-weight: 700;
-      color: var(--text); background: var(--surface);
-      border: none; border-bottom: 2px solid var(--border);
-      border-radius: 0; outline: none;
-      transition: border-color var(--transition);
-    }
-    .sig-name-input:focus { border-color: var(--primary); }
-    .sig-name-input::placeholder { color: var(--text3); font-weight: 400; font-size: .78rem; }
-    .sig-line {
-      width: 100%; height: 58px;
-      border: 1.5px dashed var(--border); border-radius: var(--radius-xs);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .68rem; color: var(--text3); font-weight: 500;
-      transition: border-color var(--transition);
-    }
-    .sig-box:hover .sig-line { border-color: var(--border-hov); }
-    .sig-date { font-size: .7rem; color: var(--text3); font-weight: 500; }
-
-    /* ── STAMP ── */
-    .stamp-row {
-      display: flex; align-items: center; justify-content: flex-start;
-      padding: 4px 24px 22px; gap: 14px;
-    }
-    .stamp-box {
-      width: 104px; height: 104px; border-radius: 50%;
-      border: 2px dashed var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .67rem; color: var(--text3); text-align: center; line-height: 1.6;
-      font-weight: 600;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-    .stamp-box:hover { border-color: var(--border-hov); transform: scale(1.04); }
-    .stamp-label { font-size: .73rem; color: var(--text3); font-style: italic; font-weight: 500; }
-
-    /* ── NOTES ── */
-    .notes-area {
-      width: 100%; min-height: 80px; resize: vertical;
-      padding: 12px 16px; font-family: var(--font); font-size: .86rem; font-weight: 500;
-      color: var(--text); background: var(--surface2);
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      outline: none; transition: all var(--transition); line-height: 1.75;
-    }
-    .notes-area:hover { border-color: var(--border-hov); background: var(--surface); }
-    .notes-area:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px var(--primary-glow);
-      background: var(--surface);
-    }
-    .notes-area::placeholder { color: var(--text3); }
-    .notes-pad { padding: 18px 24px 24px; }
-
-    /* ── FOOTER ── */
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
     .app-footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 18px 24px; text-align: center;
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 20px 24px; text-align: center;
       display: flex; flex-direction: column; gap: 4px;
-      transition: background var(--transition), border-color var(--transition);
+      transition: background var(--t) var(--ease), border-color var(--t) var(--ease);
+      position: relative; z-index: 1;
     }
-    .app-footer p { font-size: .78rem; color: var(--text3); transition: color var(--transition); font-weight: 500; }
+    .app-footer p { font-size: .8rem; color: var(--text3); transition: color var(--t) var(--ease); font-weight: 500; }
     .footer-name { color: var(--primary); font-weight: 800; }
-    .footer-copy { font-size: .7rem !important; opacity: .6; }
+    .footer-copy { font-size: .72rem !important; opacity: .65; }
 
-    /* ── SCROLLBAR ── */
+    /* ══════════════════════════════════
+       SCROLLBAR
+    ══════════════════════════════════ */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
@@ -675,36 +639,6 @@
     input[type=number]::-webkit-outer-spin-button { opacity: 0; }
     input[type=number] { -moz-appearance: textfield; }
     option { background: var(--surface); color: var(--text); }
-
-    /* ── PRINT ── */
-    @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      body { background: #fff !important; color: #000 !important; }
-      body::before { display: none !important; }
-      .app-header, .app-footer, .btn-row, .print-hide, .no-print { display: none !important; }
-      .main-content { padding: 0 !important; max-width: 100% !important; }
-      .card { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; transform: none !important; }
-      .card:hover { transform: none !important; }
-      .results-section { opacity: 1 !important; transform: none !important; }
-      .breakdown-body { max-height: none !important; }
-      .sig-name-input { border-bottom: 1px solid #999 !important; background: transparent !important; }
-      .notes-area { border: 1px solid #ccc !important; background: transparent !important; }
-      .print-header { display: flex !important; }
-      .section-label span { background: #e8f1fb !important; color: #1d5fa6 !important; border-color: #b8d4f0 !important; }
-    }
-
-    /* Print-only header */
-    .print-header {
-      display: none;
-      align-items: center; justify-content: space-between;
-      padding: 0 0 18px; margin-bottom: 20px;
-      border-bottom: 3px double #1d5fa6;
-    }
-    .print-header-center { text-align: center; flex: 1; }
-    .print-ministry { font-size: 1rem; font-weight: 900; color: #0b3d7a; }
-    .print-doc-title { font-size: .88rem; font-weight: 800; color: #1d5fa6; margin-top: 3px; }
-    .print-doc-num { font-size: .73rem; color: #555; margin-top: 3px; }
-    .print-logo-box { width: 60px; height: 60px; }
   </style>
 </head>
 <body>
@@ -713,163 +647,91 @@
   <header class="app-header">
     <div class="header-inner">
       <div class="header-logo">
-        <svg width="40" height="40" viewBox="0 0 42 42" fill="none">
-          <circle cx="21" cy="21" r="21" fill="url(#grad)"/>
-          <path d="M13 28l8-14 8 14H13z" fill="white" opacity="0.9"/>
-          <circle cx="21" cy="17" r="3" fill="white" opacity="0.7"/>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <circle cx="21" cy="21" r="21" fill="url(#hg)"/>
+          <path d="M13 28l8-14 8 14H13z" fill="white" opacity="0.92"/>
+          <circle cx="21" cy="17" r="3" fill="white" opacity="0.72"/>
           <defs>
-            <linearGradient id="grad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#1e6fb5"/><stop offset="1" stop-color="#0d4a8a"/>
+            <linearGradient id="hg" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2679d4"/><stop offset="1" stop-color="#0a3568"/>
             </linearGradient>
           </defs>
         </svg>
       </div>
       <div class="header-text">
         <h1 class="header-title">مديرية غاز جنوب المنطقة الوسطى</h1>
-        <p class="header-sub">نموذج حساب الإضافي للموظفين</p>
+        <p class="header-sub">نظام حساب الإضافي للموظفين</p>
       </div>
-      <div class="header-actions">
-        <button class="print-btn no-print" onclick="printForm()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8"/>
-          </svg>
-          طباعة النموذج
-        </button>
-        <button class="icon-btn" id="darkToggle" title="الوضع الليلي">
-          <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-          <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        </button>
-      </div>
+      <button class="dark-toggle" id="darkToggle" title="الوضع الليلي">
+        <svg id="iconMoon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="iconSun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
     </div>
   </header>
 
   <!-- MAIN -->
   <main class="main-content">
 
-    <!-- Print-only official header -->
-    <div class="print-header">
-      <div class="print-logo-box">
-        <svg width="60" height="60" viewBox="0 0 42 42" fill="none">
-          <circle cx="21" cy="21" r="21" fill="#1e6fb5"/>
-          <path d="M13 28l8-14 8 14H13z" fill="white" opacity="0.9"/>
-          <circle cx="21" cy="17" r="3" fill="white" opacity="0.7"/>
-        </svg>
-      </div>
-      <div class="print-header-center">
-        <div class="print-ministry">الجمهورية العربية السورية — وزارة النفط والثروة المعدنية</div>
-        <div class="print-doc-title">مديرية غاز جنوب المنطقة الوسطى</div>
-        <div class="print-doc-num">نموذج حساب ساعات العمل الإضافية</div>
-      </div>
-      <div class="print-logo-box" style="opacity:0"></div>
-    </div>
-
-    <!-- ① بيانات الموظف -->
-    <div class="section-label"><span>① بيانات الموظف</span></div>
-    <div class="card">
+    <!-- Form Card -->
+    <div class="card form-card">
       <div class="card-header">
         <span class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
           </svg>
         </span>
-        <div>
-          <div class="card-title">بيانات الموظف</div>
-          <div class="card-subtitle">يرجى تعبئة جميع الحقول المطلوبة</div>
-        </div>
+        <h2 class="card-title">بيانات الموظف</h2>
       </div>
+
       <div class="form-grid">
-        <div class="field-group span2">
-          <label class="field-label"><span class="label-dot"></span>اسم الموظف الكامل <span class="req">*</span></label>
-          <input class="form-input" type="text" id="empName" placeholder="أدخل الاسم الكامل للموظف"/>
-        </div>
+        <!-- طبيعة الدوام -->
         <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>رقم الموظف (الرقم الوظيفي)</label>
-          <input class="form-input" type="text" id="empId" placeholder="مثال: 12345"/>
-        </div>
-      </div>
-      <div class="form-grid">
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>المسمى الوظيفي</label>
-          <input class="form-input" type="text" id="empTitle" placeholder="مثال: مهندس أول"/>
-        </div>
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>القسم / الوحدة</label>
-          <input class="form-input" type="text" id="empDept" placeholder="مثال: قسم الإنتاج"/>
-        </div>
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>الدرجة الوظيفية</label>
-          <input class="form-input" type="text" id="empGrade" placeholder="مثال: الدرجة الأولى"/>
-        </div>
-      </div>
-      <div class="form-grid four" style="padding-top:0">
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>الشهر <span class="req">*</span></label>
-          <div class="select-wrapper">
-            <select class="form-select" id="month">
-              <option value="1">يناير</option><option value="2">فبراير</option><option value="3">مارس</option>
-              <option value="4">أبريل</option><option value="5">مايو</option><option value="6">يونيو</option>
-              <option value="7">يوليو</option><option value="8">أغسطس</option><option value="9">سبتمبر</option>
-              <option value="10">أكتوبر</option><option value="11">نوفمبر</option><option value="12">ديسمبر</option>
-            </select>
-            <svg class="select-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>السنة <span class="req">*</span></label>
-          <input class="form-input" type="number" id="year" placeholder="2025" min="2000" max="2100"/>
-        </div>
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>طبيعة الدوام <span class="req">*</span></label>
+          <label class="field-label"><span class="label-dot"></span>طبيعة الدوام</label>
           <div class="select-wrapper">
             <select class="form-select" id="shift">
               <option value="morning">صباحي</option>
               <option value="wardee">ورادي</option>
             </select>
-            <svg class="select-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
         </div>
+        <!-- الفئة -->
         <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>الفئة <span class="req">*</span></label>
+          <label class="field-label"><span class="label-dot"></span>الفئة</label>
           <div class="select-wrapper">
             <select class="form-select" id="category">
-              <option value="1">فئة 1</option><option value="2">فئة 2</option><option value="3">فئة 3</option>
-              <option value="4">فئة 4</option><option value="5">فئة 5</option>
+              <option value="1">فئة 1</option>
+              <option value="2">فئة 2</option>
+              <option value="3">فئة 3</option>
+              <option value="4">فئة 4</option>
+              <option value="5">فئة 5</option>
             </select>
-            <svg class="select-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- ② بيانات الراتب والساعات -->
-    <div class="section-label"><span>② بيانات الراتب والساعات</span></div>
-    <div class="card">
-      <div class="card-header">
-        <span class="card-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </span>
-        <div>
-          <div class="card-title">بيانات الراتب والساعات الإضافية</div>
-          <div class="card-subtitle">أدخل الراتب المقطوع وعدد الساعات لكل نوع</div>
-        </div>
-      </div>
-
-      <!-- Ceilings -->
+      <!-- Ceilings collapsible -->
       <div class="ceilings-table">
         <button class="ceilings-toggle" id="ceilingsToggle">
-          <span class="ceilings-title">سقوف الفئات — الحد الأعلى للإضافي 5%</span>
-          <svg id="ceilingsArrow" class="ceilings-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="ceilings-title">سقوف الفئات (الحد الأعلى للإضافي 5%)</span>
+          <svg id="ceilingsArrow" class="ceilings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </button>
         <div class="ceilings-row" id="ceilingsRow" style="display:none">
           <div class="ceiling-cell active" id="ceil-1"><div class="ceiling-cat">فئة 1</div><div class="ceiling-val">1,057 ل.س</div></div>
@@ -880,74 +742,71 @@
         </div>
       </div>
 
-      <div class="form-grid four" style="padding-top:0">
-        <div class="field-group span2">
-          <label class="field-label"><span class="label-dot"></span>الراتب المقطوع (ليرة سورية) <span class="req">*</span></label>
+      <div class="form-grid" style="padding-top:0">
+        <!-- الراتب -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>الراتب المقطوع (ليرة سورية)</label>
           <input class="form-input" type="number" id="salary" min="0" placeholder="أدخل الراتب المقطوع"/>
         </div>
+        <!-- ساعات 5% -->
         <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>ساعات 5%</label>
-          <input class="form-input" type="number" id="hours5" min="0" placeholder="0"/>
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات 5%</label>
+          <input class="form-input" type="number" id="hours5" min="0" placeholder="أدخل عدد الساعات"/>
         </div>
+        <!-- ساعات النهاري -->
         <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>ساعات نهاري</label>
-          <input class="form-input" type="number" id="hoursDay" min="0" placeholder="0"/>
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات النهاري</label>
+          <input class="form-input" type="number" id="hoursDay" min="0" placeholder="أدخل عدد الساعات"/>
         </div>
-      </div>
-      <div class="form-grid four" style="padding-top:0; padding-bottom:8px">
+        <!-- ساعات الليلي -->
         <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>ساعات ليلي</label>
-          <input class="form-input" type="number" id="hoursNight" min="0" placeholder="0"/>
-        </div>
-        <div class="field-group">
-          <label class="field-label"><span class="label-dot"></span>إجمالي الساعات</label>
-          <input class="form-input" type="number" id="hoursTotal" min="0" placeholder="0" readonly style="background:var(--surface2);cursor:default;"/>
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات الليلي</label>
+          <input class="form-input" type="number" id="hoursNight" min="0" placeholder="أدخل عدد الساعات"/>
         </div>
       </div>
 
-      <div class="btn-row no-print">
+      <div class="btn-row">
         <button class="btn-primary" onclick="calculate()">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="2" width="16" height="20" rx="2"/>
-            <line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="8" y1="10" x2="16" y2="10"/>
+            <line x1="8" y1="14" x2="12" y2="14"/>
           </svg>
           احسب الإضافي
         </button>
         <button class="btn-secondary" onclick="resetForm()">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
           </svg>
           إعادة تعيين
         </button>
       </div>
     </div>
 
-    <!-- ③ نتائج الحساب -->
+    <!-- Results Section -->
     <div class="results-section" id="resultsSection">
 
-      <div class="section-label"><span>③ نتائج الحساب</span></div>
-
-      <div class="card">
+      <!-- Results Card -->
+      <div class="card results-card">
         <div class="card-header">
           <span class="card-icon accent">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </span>
-          <div>
-            <div class="card-title">نتائج الحساب</div>
-            <div class="card-subtitle" id="resultSubtitle"></div>
-          </div>
+          <h2 class="card-title">نتائج الحساب</h2>
         </div>
 
-        <!-- Employee summary for print -->
-        <div class="result-meta" id="resultMeta"></div>
-
-        <div class="result-boxes">
+        <div class="result-boxes" id="resultBoxes">
+          <!-- res5 -->
           <div class="result-box" id="res5Box">
             <div class="result-box-label">
               <div class="result-box-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
               </div>
               <span id="res5Label">الإضافي 5%</span>
             </div>
@@ -956,10 +815,14 @@
               <span class="result-box-currency">ل.س</span>
             </div>
           </div>
+
+          <!-- resDay -->
           <div class="result-box" id="resDayBox">
             <div class="result-box-label">
               <div class="result-box-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                </svg>
               </div>
               <span>الإضافي النهاري</span>
             </div>
@@ -968,10 +831,14 @@
               <span class="result-box-currency">ل.س</span>
             </div>
           </div>
+
+          <!-- resNight -->
           <div class="result-box" id="resNightBox">
             <div class="result-box-label">
               <div class="result-box-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
               </div>
               <span>الإضافي الليلي</span>
             </div>
@@ -988,112 +855,50 @@
         </div>
       </div>
 
-      <!-- Breakdown -->
-      <div class="card">
+      <!-- Breakdown Card — collapsible -->
+      <div class="card breakdown-card">
         <button class="breakdown-header-btn" id="breakdownToggle" onclick="toggleBreakdown()">
           <div class="breakdown-header-inner">
-            <span class="card-icon" style="width:38px;height:38px;border-radius:10px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,color .3s;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span class="card-icon" style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--primary-l),rgba(26,94,168,.04));color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(26,94,168,.13);transition:transform var(--t) var(--ease);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
             </span>
-            <div class="card-title">طريقة الحساب بالتفصيل</div>
+            <span class="card-title">طريقة الحساب بالتفصيل</span>
           </div>
-          <svg id="breakdownArrow" class="breakdown-toggle-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          <svg id="breakdownArrow" class="breakdown-toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
         </button>
         <div class="breakdown-body" id="breakdownBody">
           <div class="breakdown-list" id="breakdownList"></div>
         </div>
       </div>
 
-      <!-- ④ التوقيعات -->
-      <div class="section-label"><span>④ التوقيعات والمصادقة</span></div>
-      <div class="card">
-        <div class="card-header">
-          <span class="card-icon warn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </span>
-          <div>
-            <div class="card-title">التوقيعات والمصادقة الرسمية</div>
-            <div class="card-subtitle">يُرجى إكمال التوقيعات قبل الطباعة</div>
-          </div>
-        </div>
-        <div class="sig-grid">
-          <div class="sig-box">
-            <div class="sig-title">اسم منظّم النموذج</div>
-            <input class="sig-name-input" type="text" id="sigPrepared" placeholder="الاسم الكامل"/>
-            <div class="sig-line">التوقيع</div>
-            <div class="sig-date">التاريخ: <span class="sig-date-val" id="sdPrepared">___/___/______</span></div>
-          </div>
-          <div class="sig-box">
-            <div class="sig-title">اسم المشرف المباشر</div>
-            <input class="sig-name-input" type="text" id="sigSupervisor" placeholder="الاسم الكامل"/>
-            <div class="sig-line">التوقيع</div>
-            <div class="sig-date">التاريخ: <span class="sig-date-val" id="sdSupervisor">___/___/______</span></div>
-          </div>
-          <div class="sig-box">
-            <div class="sig-title">اسم المدير المخوّل</div>
-            <input class="sig-name-input" type="text" id="sigManager" placeholder="الاسم الكامل"/>
-            <div class="sig-line">التوقيع</div>
-            <div class="sig-date">التاريخ: <span class="sig-date-val" id="sdManager">___/___/______</span></div>
-          </div>
-        </div>
-        <div class="stamp-row">
-          <div class="stamp-box">ختم<br>الجهة<br>الرسمية</div>
-          <span class="stamp-label">مكان الختم الرسمي</span>
-        </div>
-      </div>
-
-      <!-- ⑤ ملاحظات -->
-      <div class="section-label"><span>⑤ ملاحظات</span></div>
-      <div class="card">
-        <div class="card-header">
-          <span class="card-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-            </svg>
-          </span>
-          <div class="card-title">ملاحظات إضافية</div>
-        </div>
-        <div class="notes-pad">
-          <textarea class="notes-area" id="notes" placeholder="أدخل أي ملاحظات أو تعليقات تتعلق بهذا النموذج..."></textarea>
-        </div>
-      </div>
-
-    </div><!-- /results-section -->
+    </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="app-footer">
     <p>تصميم وتطوير <span class="footer-name">William Alhasan</span></p>
-    <p class="footer-copy">© <span id="footYear"></span> مديرية غاز جنوب المنطقة الوسطى — جميع الحقوق محفوظة</p>
+    <p class="footer-copy">© <span id="year"></span> مديرية غاز جنوب المنطقة الوسطى</p>
   </footer>
 
   <script>
-    const CEILINGS   = { 1: 21140, 2: 18650, 3: 17780, 4: 17780, 5: 16470 };
-    const MONTHS_AR  = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-    const CURRENCY   = 'ل.س';
+    const CEILINGS      = { 1: 21140, 2: 18650, 3: 17780, 4: 17780, 5: 16470 };
+    const CURRENCY      = 'ل.س';
+    const CURRENCY_FULL = 'ليرة سورية';
 
-    // init
-    document.getElementById('footYear').textContent = new Date().getFullYear();
-    document.getElementById('year').value = new Date().getFullYear();
-    const curMonth = new Date().getMonth() + 1;
-    document.getElementById('month').value = curMonth;
-
-    // set today's date in signature fields
-    const todayStr = new Date().toLocaleDateString('ar-SY');
-    ['sdPrepared','sdSupervisor','sdManager'].forEach(id => {
-      document.getElementById(id).textContent = todayStr;
-    });
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // Dark Mode
     let dark = false;
     document.getElementById('darkToggle').addEventListener('click', () => {
       dark = !dark;
       document.body.classList.toggle('dark', dark);
-      document.getElementById('iconMoon').style.display = dark ? 'none' : 'block';
+      document.getElementById('iconMoon').style.display = dark ? 'none'  : 'block';
       document.getElementById('iconSun').style.display  = dark ? 'block' : 'none';
+      document.getElementById('darkToggle').title = dark ? 'الوضع النهاري' : 'الوضع الليلي';
     });
 
     // Ceilings Toggle
@@ -1104,28 +909,17 @@
       document.getElementById('ceilingsArrow').classList.toggle('open', ceilingsOpen);
     });
 
-    // Highlight active ceiling
+    // Highlight active ceiling on category change
     document.getElementById('category').addEventListener('change', function () {
       const val = this.value;
-      [1,2,3,4,5].forEach(c => document.getElementById('ceil-'+c).classList.toggle('active', String(c)===val));
+      [1,2,3,4,5].forEach(c => {
+        document.getElementById('ceil-' + c).classList.toggle('active', String(c) === val);
+      });
     });
 
-    // Auto-calculate total hours
-    ['hours5','hoursDay','hoursNight'].forEach(id => {
-      document.getElementById(id).addEventListener('input', updateTotalHours);
-    });
-    function updateTotalHours() {
-      const h5    = parseFloat(document.getElementById('hours5').value)     || 0;
-      const hDay  = parseFloat(document.getElementById('hoursDay').value)   || 0;
-      const hNight= parseFloat(document.getElementById('hoursNight').value) || 0;
-      document.getElementById('hoursTotal').value = (h5 + hDay + hNight) || '';
-    }
-
-    // Format
-    function fmt(n) { return n.toLocaleString('ar-SY', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
-    function toAr(n) {
-      const d = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-      return String(n).split('').map(c => d[+c] ?? c).join('');
+    // Format Number
+    function fmt(n) {
+      return n.toLocaleString('ar-SY', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     // Breakdown toggle
@@ -1136,6 +930,20 @@
       document.getElementById('breakdownArrow').classList.toggle('open', breakdownOpen);
     }
 
+    // Show/hide a result box based on whether value is zero
+    function setBox(boxId, valId, value, extraClass) {
+      const box  = document.getElementById(boxId);
+      const span = document.getElementById(valId);
+      if (value === 0) {
+        box.style.display = 'none';
+      } else {
+        box.style.display = 'flex';
+        span.textContent = fmt(value);
+        if (extraClass) box.classList.add(extraClass);
+        else box.classList.remove('capped');
+      }
+    }
+
     // Calculate
     function calculate() {
       const shift    = document.getElementById('shift').value;
@@ -1144,110 +952,122 @@
       const h5       = parseFloat(document.getElementById('hours5').value)    || 0;
       const hDay     = parseFloat(document.getElementById('hoursDay').value)  || 0;
       const hNight   = parseFloat(document.getElementById('hoursNight').value)|| 0;
-      const monthVal = parseInt(document.getElementById('month').value);
-      const yearVal  = document.getElementById('year').value || new Date().getFullYear();
-      const empName  = document.getElementById('empName').value.trim() || '—';
-      const empId    = document.getElementById('empId').value.trim()   || '—';
-      const empTitle = document.getElementById('empTitle').value.trim()|| '—';
-      const empDept  = document.getElementById('empDept').value.trim() || '—';
 
+      // صباحي ÷ 225، ورادي ÷ 180
       const divisor  = shift === 'morning' ? 225 : 180;
       const hourRate = salary / divisor;
+
       const ceilFull = CEILINGS[category];
       const ceiling  = ceilFull * 0.05;
       const rawOt5   = hourRate * 1.25 * h5;
       let ot5        = rawOt5;
       const capped   = ot5 > ceiling;
       if (capped) ot5 = ceiling;
-      const otDay    = hourRate * 1.25 * hDay;
-      const otNight  = hourRate * 1.5  * hNight;
-      const total    = ot5 + otDay + otNight;
 
-      // subtitle
-      document.getElementById('resultSubtitle').textContent =
-        `${MONTHS_AR[monthVal-1]} ${yearVal} — ${shift === 'morning' ? 'دوام صباحي' : 'دوام ورادي'} — فئة ${category}`;
+      const otDay   = hourRate * 1.25 * hDay;
+      const otNight = hourRate * 1.5  * hNight;
+      const total   = ot5 + otDay + otNight;
 
-      // employee meta strip
-      document.getElementById('resultMeta').innerHTML = `
-        <div class="result-meta-item"><div class="result-meta-label">اسم الموظف</div><div class="result-meta-value">${empName}</div></div>
-        <div class="result-meta-item"><div class="result-meta-label">الرقم الوظيفي</div><div class="result-meta-value">${empId}</div></div>
-        <div class="result-meta-item"><div class="result-meta-label">المسمى الوظيفي</div><div class="result-meta-value">${empTitle}</div></div>
-        <div class="result-meta-item"><div class="result-meta-label">القسم</div><div class="result-meta-value">${empDept}</div></div>
-        <div class="result-meta-item"><div class="result-meta-label">الفترة</div><div class="result-meta-value">${MONTHS_AR[monthVal-1]} ${yearVal}</div></div>
-        <div class="result-meta-item"><div class="result-meta-label">الراتب المقطوع</div><div class="result-meta-value">${fmt(salary)} ل.س</div></div>`;
-
-      // res5
+      // Results — hide zeros
       const res5Box = document.getElementById('res5Box');
-      if (ot5 === 0) { res5Box.style.display = 'none'; }
-      else {
+      if (ot5 === 0) {
+        res5Box.style.display = 'none';
+      } else {
         res5Box.style.display = 'flex';
         document.getElementById('res5Val').textContent = fmt(ot5);
-        document.getElementById('res5Label').innerHTML = 'الإضافي 5%' + (capped ? ' <span class="cap-badge">مسقوف</span>' : '');
+        const label5 = document.getElementById('res5Label');
+        label5.innerHTML = 'الإضافي 5%' + (capped ? ' <span class="cap-badge">مسقوف</span>' : '');
         res5Box.classList.toggle('capped', capped);
       }
+
       const resDayBox = document.getElementById('resDayBox');
-      if (otDay === 0) { resDayBox.style.display = 'none'; }
-      else { resDayBox.style.display = 'flex'; document.getElementById('resDayVal').textContent = fmt(otDay); resDayBox.classList.remove('capped'); }
+      if (otDay === 0) {
+        resDayBox.style.display = 'none';
+      } else {
+        resDayBox.style.display = 'flex';
+        document.getElementById('resDayVal').textContent = fmt(otDay);
+        resDayBox.classList.remove('capped');
+      }
 
       const resNightBox = document.getElementById('resNightBox');
-      if (otNight === 0) { resNightBox.style.display = 'none'; }
-      else { resNightBox.style.display = 'flex'; document.getElementById('resNightVal').textContent = fmt(otNight); resNightBox.classList.remove('capped'); }
+      if (otNight === 0) {
+        resNightBox.style.display = 'none';
+      } else {
+        resNightBox.style.display = 'flex';
+        document.getElementById('resNightVal').textContent = fmt(otNight);
+        resNightBox.classList.remove('capped');
+      }
 
       document.getElementById('resTotalVal').textContent = fmt(total);
 
-      // breakdown
-      const shiftLabel = shift === 'morning' ? 'صباحي = 225 ساعة/شهر' : 'ورادي = 180 ساعة/شهر';
-      let steps = `
+      const shiftLabel = shift === 'morning' ? 'دوام صباحي = 225 ساعة شهرياً' : 'دوام ورادي = 180 ساعة شهرياً';
+
+      // Breakdown steps
+      let steps = '';
+
+      steps += `
         <div class="breakdown-step">
           <div class="step-num">١</div>
           <div class="step-body">
             <div class="step-title">حساب قيمة ساعة الأساس</div>
             <div class="step-eq">الراتب المقطوع ÷ ${divisor} = قيمة ساعة الأساس</div>
-            <div class="step-val">${fmt(salary)} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
-            <div class="step-note">(دوام ${shiftLabel})</div>
+            <div class="step-val">${salary.toLocaleString('ar-SY')} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
+            <div class="step-note">(${shiftLabel})</div>
           </div>
         </div>`;
-      let n = 2;
-      if (h5 > 0) steps += `
+
+      let stepNum = 2;
+
+      if (h5 > 0) {
+        steps += `
         <div class="breakdown-step">
-          <div class="step-num">${toAr(n++)}</div>
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
           <div class="step-body">
             <div class="step-title">حساب الإضافي 5%</div>
-            <div class="step-eq">ساعة الأساس × 1.25 × عدد ساعات 5%</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات 5% = قيمة الإضافي 5%</div>
             <div class="step-val">${fmt(hourRate)} × 1.25 × ${h5} = <strong>${fmt(rawOt5)} ${CURRENCY}</strong></div>
             <div class="step-note">سقف الفئة ${category}: 5% × ${ceilFull.toLocaleString('ar-SY')} = <strong>${fmt(ceiling)} ${CURRENCY}</strong>${capped ? ' ← تم تطبيق السقف' : ''}</div>
           </div>
         </div>`;
-      if (hDay > 0) steps += `
+      }
+
+      if (hDay > 0) {
+        steps += `
         <div class="breakdown-step">
-          <div class="step-num">${toAr(n++)}</div>
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
           <div class="step-body">
             <div class="step-title">حساب الإضافي النهاري</div>
-            <div class="step-eq">ساعة الأساس × 1.25 × عدد ساعات النهاري</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات النهاري = قيمة الإضافي النهاري</div>
             <div class="step-val">${fmt(hourRate)} × 1.25 × ${hDay} = <strong>${fmt(otDay)} ${CURRENCY}</strong></div>
           </div>
         </div>`;
-      if (hNight > 0) steps += `
+      }
+
+      if (hNight > 0) {
+        steps += `
         <div class="breakdown-step">
-          <div class="step-num">${toAr(n++)}</div>
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
           <div class="step-body">
             <div class="step-title">حساب الإضافي الليلي</div>
-            <div class="step-eq">ساعة الأساس × 1.50 × عدد ساعات الليلي</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.50 × عدد ساعات الليلي = قيمة الإضافي الليلي</div>
             <div class="step-val">${fmt(hourRate)} × 1.50 × ${hNight} = <strong>${fmt(otNight)} ${CURRENCY}</strong></div>
           </div>
         </div>`;
+      }
+
       steps += `
         <div class="breakdown-step total-step">
-          <div class="step-num">${toAr(n)}</div>
+          <div class="step-num">${toArabicNum(stepNum)}</div>
           <div class="step-body">
             <div class="step-title">المجموع الكلي</div>
-            <div class="step-eq">إضافي 5% + نهاري + ليلي = المجموع</div>
+            <div class="step-eq">إضافي 5% + إضافي نهاري + إضافي ليلي = المجموع</div>
             <div class="step-val">${fmt(ot5)} + ${fmt(otDay)} + ${fmt(otNight)} = <strong>${fmt(total)} ${CURRENCY}</strong></div>
           </div>
         </div>`;
+
       document.getElementById('breakdownList').innerHTML = steps;
 
-      // show results
+      // Show results with animation
       const section = document.getElementById('resultsSection');
       section.classList.remove('visible');
       void section.offsetWidth;
@@ -1257,31 +1077,949 @@
       }, 50);
     }
 
+    // Arabic numerals helper
+    function toArabicNum(n) {
+      const nums = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      return String(n).split('').map(d => nums[parseInt(d)] || d).join('');
+    }
+
     // Reset
     function resetForm() {
-      ['empName','empId','empTitle','empDept','empGrade','salary','hours5','hoursDay','hoursNight','hoursTotal','notes','sigPrepared','sigSupervisor','sigManager'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
       document.getElementById('shift').value    = 'morning';
       document.getElementById('category').value = '1';
-      document.getElementById('month').value    = new Date().getMonth() + 1;
-      document.getElementById('year').value     = new Date().getFullYear();
-      [1,2,3,4,5].forEach(c => document.getElementById('ceil-'+c).classList.toggle('active', c===1));
+      document.getElementById('salary').value   = '';
+      document.getElementById('hours5').value   = '';
+      document.getElementById('hoursDay').value = '';
+      document.getElementById('hoursNight').value = '';
+      [1,2,3,4,5].forEach(c =>
+        document.getElementById('ceil-' + c).classList.toggle('active', c === 1)
+      );
       document.getElementById('resultsSection').classList.remove('visible');
       breakdownOpen = false;
       document.getElementById('breakdownBody').classList.remove('open');
       document.getElementById('breakdownArrow').classList.remove('open');
     }
+  </script>
 
-    // Print
-    function printForm() {
-      if (!document.getElementById('resultsSection').classList.contains('visible')) {
-        alert('يرجى حساب الإضافي أولاً قبل الطباعة');
-        return;
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حاسبة الإضافي — مديرية غاز جنوب المنطقة الوسطى</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface2: #f7f9fc;
+      --border: #e2e8f0;
+      --text: #1a202c;
+      --text2: #4a5568;
+      --text3: #718096;
+      --primary: #1e6fb5;
+      --primary-dark: #155a96;
+      --primary-light: #e8f1fb;
+      --accent: #0d9488;
+      --accent-light: #e0f5f4;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+      --radius: 14px;
+      --radius-sm: 9px;
+      --font: 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+    .dark {
+      --bg: #0f1117;
+      --surface: #1a1f2e;
+      --surface2: #141824;
+      --border: #2d3448;
+      --text: #f0f4f8;
+      --text2: #a8b2c8;
+      --text3: #6b7694;
+      --primary: #4d9de0;
+      --primary-dark: #3a8bd4;
+      --primary-light: #1a2a3d;
+      --accent: #14b8a6;
+      --accent-light: #0d2926;
+      --warning: #fbbf24;
+      --warning-light: #1f1a0a;
+      --shadow: 0 4px 12px rgba(0,0,0,.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background .3s, color .3s;
+    }
+
+    /* HEADER */
+    .app-header {
+      background: linear-gradient(135deg, #0d4a8a 0%, #1e6fb5 50%, #2584d4 100%);
+      box-shadow: 0 4px 20px rgba(13,74,138,.35);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .dark .app-header {
+      background: linear-gradient(135deg, #0a1929 0%, #0d2d50 50%, #0f3a6e 100%);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-logo { flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,.3)); }
+    .header-logo svg { display: block; }
+    .header-text { flex: 1; }
+    .header-title {
+      font-size: clamp(1rem, 3.5vw, 1.35rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      text-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .header-sub { font-size: .8rem; color: rgba(255,255,255,.72); margin-top: 2px; }
+    .dark-toggle {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .dark-toggle:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.45); transform: scale(1.05); }
+
+    /* MAIN */
+    .main-content {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+      transition: background .3s, border-color .3s;
+    }
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, color .3s;
+    }
+    .card-icon.accent { background: var(--accent-light); color: var(--accent); }
+    .card-title { font-size: 1.05rem; font-weight: 700; color: var(--text); transition: color .3s; }
+
+    /* FORM */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 24px;
+    }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
+      .card-header { padding: 16px; }
+    }
+    .field-group { display: flex; flex-direction: column; gap: 7px; }
+    .field-label {
+      font-size: .82rem; font-weight: 600; color: var(--text2);
+      display: flex; align-items: center; gap: 7px;
+      transition: color .3s;
+    }
+    .label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      transition: background .3s;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: var(--font);
+      font-size: .92rem; font-weight: 500;
+      color: var(--text);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: all .2s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,111,181,.13);
+    }
+    .form-input:hover, .form-select:hover { border-color: var(--primary); }
+    .form-input::placeholder { color: var(--text3); font-weight: 400; }
+    .select-wrapper { position: relative; }
+    .select-wrapper .form-select { padding-left: 36px; cursor: pointer; }
+    .select-icon {
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3); pointer-events: none;
+    }
+
+    /* CEILINGS */
+    .ceilings-table {
+      margin: 0 24px 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: background .3s, border-color .3s;
+    }
+    @media (max-width: 580px) { .ceilings-table { margin: 0 16px 8px; } }
+    .ceilings-toggle {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: none; border: none;
+      cursor: pointer; padding: 0; width: 100%;
+    }
+    .ceilings-toggle:hover .ceilings-title { color: var(--primary); }
+    .ceilings-title {
+      font-size: .75rem; font-weight: 700;
+      color: var(--text3);
+      letter-spacing: .3px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .ceilings-arrow {
+      color: var(--text3);
+      transition: transform .25s ease, color .2s;
+      flex-shrink: 0;
+    }
+    .ceilings-arrow.open { transform: rotate(180deg); color: var(--primary); }
+    .ceilings-row {
+      margin-top: 10px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .ceiling-cell {
+      flex: 1; min-width: 80px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 8px 10px;
+      text-align: center;
+      transition: all .2s;
+    }
+    .ceiling-cell.active { border-color: var(--primary); background: var(--primary-light); }
+    .ceiling-cat { font-size: .73rem; font-weight: 700; color: var(--text3); margin-bottom: 3px; transition: color .3s; }
+    .ceiling-cell.active .ceiling-cat { color: var(--primary); }
+    .ceiling-val { font-size: .78rem; font-weight: 800; color: var(--text2); direction: ltr; transition: color .3s; }
+    .ceiling-cell.active .ceiling-val { color: var(--primary); }
+
+    /* BUTTONS */
+    .btn-row {
+      display: flex; gap: 12px;
+      padding: 0 24px 24px; flex-wrap: wrap;
+    }
+    @media (max-width: 580px) { .btn-row { padding: 0 16px 16px; } }
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font); font-size: .95rem; font-weight: 700;
+      cursor: pointer; border: none;
+      transition: all .2s;
+      flex: 1; min-width: 140px; justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(30,111,181,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,111,181,.45); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: var(--surface2); color: var(--text2);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--border); color: var(--text); transform: translateY(-1px); }
+
+    /* RESULTS SECTION */
+    .results-section {
+      display: flex; flex-direction: column; gap: 24px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .results-section.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESULT BOXES */
+    .result-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .result-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      transition: background .2s, border-color .3s;
+      gap: 16px;
+    }
+    .result-box:last-of-type { border-bottom: none; }
+    .result-box:hover { background: var(--surface2); }
+    .result-box.capped { background: var(--warning-light); }
+    .result-box.capped:hover { background: var(--warning-light); }
+
+    .result-box-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text2);
+      transition: color .3s;
+    }
+    .result-box-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, color .3s;
+    }
+    .result-box.capped .result-box-icon { background: var(--warning-light); color: var(--warning); }
+    .cap-badge {
+      font-size: .67rem; background: var(--warning); color: #fff;
+      padding: 2px 8px; border-radius: 20px;
+      font-weight: 700;
+    }
+    .result-box-amount {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      direction: ltr;
+    }
+    .result-box-value {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--primary);
+      transition: color .3s;
+      line-height: 1;
+    }
+    .result-box-currency {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text3);
+      transition: color .3s;
+    }
+
+    .total-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 22px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .total-label { font-size: .95rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .total-value { font-size: 1.8rem; font-weight: 800; color: #fff; direction: ltr; text-align: left; }
+    .total-currency { font-size: .85rem; font-weight: 600; opacity: .8; margin-right: 6px; }
+
+    /* BREAKDOWN COLLAPSIBLE */
+    .breakdown-header-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+      transition: background .3s, border-color .3s;
+      gap: 12px;
+    }
+    .breakdown-header-btn:hover { background: var(--primary-light); }
+    .breakdown-header-inner {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .breakdown-toggle-arrow {
+      color: var(--text3);
+      transition: transform .28s ease, color .2s;
+      flex-shrink: 0;
+    }
+    .breakdown-toggle-arrow.open { transform: rotate(180deg); color: var(--primary); }
+
+    .breakdown-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height .4s ease;
+    }
+    .breakdown-body.open { max-height: 2000px; }
+
+    .breakdown-list { padding: 16px 24px 24px; display: flex; flex-direction: column; }
+    @media (max-width: 580px) { .breakdown-list { padding: 12px 16px 16px; } }
+    .breakdown-step {
+      display: flex; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .breakdown-step:last-child { border-bottom: none; }
+    .breakdown-step.total-step {
+      background: var(--primary-light);
+      margin: 0 -24px; padding: 18px 24px;
+      border-radius: 0 0 var(--radius) var(--radius);
+      border-bottom: none;
+    }
+    @media (max-width: 580px) {
+      .breakdown-step.total-step { margin: 0 -16px; padding: 18px 16px; }
+    }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      font-size: .9rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; transition: background .3s, color .3s;
+    }
+    .total-step .step-num { background: var(--primary); color: #fff; }
+    .step-body { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .step-title { font-size: .92rem; font-weight: 700; color: var(--text); transition: color .3s; }
+    .step-eq {
+      font-size: .8rem; color: var(--text3);
+      background: var(--surface2); padding: 6px 10px;
+      border-radius: 6px; border-right: 3px solid var(--border);
+      transition: all .3s;
+    }
+    .step-val {
+      font-size: .87rem; color: var(--text2);
+      direction: ltr; text-align: right; font-family: monospace;
+      transition: color .3s;
+    }
+    .step-val strong { color: var(--primary); font-family: var(--font); }
+    .step-note { font-size: .78rem; color: var(--text3); font-style: italic; transition: color .3s; }
+
+    /* FOOTER */
+    .app-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 20px 24px; text-align: center;
+      display: flex; flex-direction: column; gap: 4px;
+      transition: background .3s, border-color .3s;
+    }
+    .app-footer p { font-size: .83rem; color: var(--text3); transition: color .3s; }
+    .footer-name { color: var(--primary); font-weight: 700; }
+    .footer-copy { font-size: .75rem !important; opacity: .7; }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { opacity: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    option { background: var(--surface); color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="21" cy="21" r="21" fill="url(#grad)"/>
+          <path d="M13 28l8-14 8 14H13z" fill="white" opacity="0.9"/>
+          <circle cx="21" cy="17" r="3" fill="white" opacity="0.7"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#1e6fb5"/>
+              <stop offset="1" stop-color="#0d4a8a"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1 class="header-title">مديرية غاز جنوب المنطقة الوسطى</h1>
+        <p class="header-sub">نظام حساب الإضافي للموظفين</p>
+      </div>
+      <button class="dark-toggle" id="darkToggle" title="الوضع الليلي">
+        <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Form Card -->
+    <div class="card form-card">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </span>
+        <h2 class="card-title">بيانات الموظف</h2>
+      </div>
+
+      <div class="form-grid">
+        <!-- طبيعة الدوام -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>طبيعة الدوام</label>
+          <div class="select-wrapper">
+            <select class="form-select" id="shift">
+              <option value="morning">صباحي</option>
+              <option value="wardee">ورادي</option>
+            </select>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+        <!-- الفئة -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>الفئة</label>
+          <div class="select-wrapper">
+            <select class="form-select" id="category">
+              <option value="1">فئة 1</option>
+              <option value="2">فئة 2</option>
+              <option value="3">فئة 3</option>
+              <option value="4">فئة 4</option>
+              <option value="5">فئة 5</option>
+            </select>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ceilings collapsible -->
+      <div class="ceilings-table">
+        <button class="ceilings-toggle" id="ceilingsToggle">
+          <span class="ceilings-title">سقوف الفئات (الحد الأعلى للإضافي 5%)</span>
+          <svg id="ceilingsArrow" class="ceilings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="ceilings-row" id="ceilingsRow" style="display:none">
+          <div class="ceiling-cell active" id="ceil-1"><div class="ceiling-cat">فئة 1</div><div class="ceiling-val">1,057 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-2"><div class="ceiling-cat">فئة 2</div><div class="ceiling-val">932.5 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-3"><div class="ceiling-cat">فئة 3</div><div class="ceiling-val">889 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-4"><div class="ceiling-cat">فئة 4</div><div class="ceiling-val">889 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-5"><div class="ceiling-cat">فئة 5</div><div class="ceiling-val">823.5 ل.س</div></div>
+        </div>
+      </div>
+
+      <div class="form-grid" style="padding-top:0">
+        <!-- الراتب -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>الراتب المقطوع (ليرة سورية)</label>
+          <input class="form-input" type="number" id="salary" min="0" placeholder="أدخل الراتب المقطوع"/>
+        </div>
+        <!-- ساعات 5% -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات 5%</label>
+          <input class="form-input" type="number" id="hours5" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+        <!-- ساعات النهاري -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات النهاري</label>
+          <input class="form-input" type="number" id="hoursDay" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+        <!-- ساعات الليلي -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات الليلي</label>
+          <input class="form-input" type="number" id="hoursNight" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="8" y1="10" x2="16" y2="10"/>
+            <line x1="8" y1="14" x2="12" y2="14"/>
+          </svg>
+          احسب الإضافي
+        </button>
+        <button class="btn-secondary" onclick="resetForm()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          إعادة تعيين
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section" id="resultsSection">
+
+      <!-- Results Card -->
+      <div class="card results-card">
+        <div class="card-header">
+          <span class="card-icon accent">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </span>
+          <h2 class="card-title">نتائج الحساب</h2>
+        </div>
+
+        <div class="result-boxes" id="resultBoxes">
+          <!-- res5 -->
+          <div class="result-box" id="res5Box">
+            <div class="result-box-label">
+              <div class="result-box-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <span id="res5Label">الإضافي 5%</span>
+            </div>
+            <div class="result-box-amount">
+              <span class="result-box-value" id="res5Val">0.00</span>
+              <span class="result-box-currency">ل.س</span>
+            </div>
+          </div>
+
+          <!-- resDay -->
+          <div class="result-box" id="resDayBox">
+            <div class="result-box-label">
+              <div class="result-box-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                </svg>
+              </div>
+              <span>الإضافي النهاري</span>
+            </div>
+            <div class="result-box-amount">
+              <span class="result-box-value" id="resDayVal">0.00</span>
+              <span class="result-box-currency">ل.س</span>
+            </div>
+          </div>
+
+          <!-- resNight -->
+          <div class="result-box" id="resNightBox">
+            <div class="result-box-label">
+              <div class="result-box-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+              </div>
+              <span>الإضافي الليلي</span>
+            </div>
+            <div class="result-box-amount">
+              <span class="result-box-value" id="resNightVal">0.00</span>
+              <span class="result-box-currency">ل.س</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="total-box">
+          <div class="total-label">المجموع الكلي للإضافي</div>
+          <div class="total-value"><span id="resTotalVal">0.00</span> <span class="total-currency">ليرة سورية</span></div>
+        </div>
+      </div>
+
+      <!-- Breakdown Card — collapsible -->
+      <div class="card breakdown-card">
+        <button class="breakdown-header-btn" id="breakdownToggle" onclick="toggleBreakdown()">
+          <div class="breakdown-header-inner">
+            <span class="card-icon" style="width:40px;height:40px;border-radius:10px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,color .3s;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+            </span>
+            <span class="card-title">طريقة الحساب بالتفصيل</span>
+          </div>
+          <svg id="breakdownArrow" class="breakdown-toggle-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="breakdown-body" id="breakdownBody">
+          <div class="breakdown-list" id="breakdownList"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <p>تصميم وتطوير <span class="footer-name">William Alhasan</span></p>
+    <p class="footer-copy">© <span id="year"></span> مديرية غاز جنوب المنطقة الوسطى </p>
+  </footer>
+
+  <script>
+    const CEILINGS = { 1: 21140, 2: 18650, 3: 17780, 4: 17780, 5: 16470 };
+    const CURRENCY = 'ل.س';
+    const CURRENCY_FULL = 'ليرة سورية';
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Dark Mode
+    let dark = false;
+    document.getElementById('darkToggle').addEventListener('click', () => {
+      dark = !dark;
+      document.body.classList.toggle('dark', dark);
+      document.getElementById('iconMoon').style.display = dark ? 'none' : 'block';
+      document.getElementById('iconSun').style.display  = dark ? 'block' : 'none';
+      document.getElementById('darkToggle').title = dark ? 'الوضع النهاري' : 'الوضع الليلي';
+    });
+
+    // Ceilings Toggle
+    let ceilingsOpen = false;
+    document.getElementById('ceilingsToggle').addEventListener('click', () => {
+      ceilingsOpen = !ceilingsOpen;
+      document.getElementById('ceilingsRow').style.display = ceilingsOpen ? 'flex' : 'none';
+      document.getElementById('ceilingsArrow').classList.toggle('open', ceilingsOpen);
+    });
+
+    // Highlight active ceiling on category change
+    document.getElementById('category').addEventListener('change', function () {
+      const val = this.value;
+      [1,2,3,4,5].forEach(c => {
+        document.getElementById('ceil-' + c).classList.toggle('active', String(c) === val);
+      });
+    });
+
+    // Format Number
+    function fmt(n) {
+      return n.toLocaleString('ar-SY', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // Breakdown toggle
+    let breakdownOpen = false;
+    function toggleBreakdown() {
+      breakdownOpen = !breakdownOpen;
+      document.getElementById('breakdownBody').classList.toggle('open', breakdownOpen);
+      document.getElementById('breakdownArrow').classList.toggle('open', breakdownOpen);
+    }
+
+    // Show/hide a result box based on whether value is zero
+    function setBox(boxId, valId, value, extraClass) {
+      const box = document.getElementById(boxId);
+      const span = document.getElementById(valId);
+      if (value === 0) {
+        box.style.display = 'none';
+      } else {
+        box.style.display = 'flex';
+        span.textContent = fmt(value);
+        if (extraClass) box.classList.add(extraClass);
+        else box.classList.remove('capped');
       }
-      document.getElementById('breakdownBody').classList.add('open');
-      window.print();
+    }
+
+    // Calculate
+    function calculate() {
+      const shift    = document.getElementById('shift').value;
+      const category = parseInt(document.getElementById('category').value);
+      const salary   = parseFloat(document.getElementById('salary').value)    || 0;
+      const h5       = parseFloat(document.getElementById('hours5').value)    || 0;
+      const hDay     = parseFloat(document.getElementById('hoursDay').value)  || 0;
+      const hNight   = parseFloat(document.getElementById('hoursNight').value)|| 0;
+
+      // صباحي ÷ 225، ورادي ÷ 180
+      const divisor  = shift === 'morning' ? 225 : 180;
+      const hourRate = salary / divisor;
+
+      const ceilFull = CEILINGS[category];
+      const ceiling  = ceilFull * 0.05;
+      const rawOt5   = hourRate * 1.25 * h5;
+      let ot5        = rawOt5;
+      const capped   = ot5 > ceiling;
+      if (capped) ot5 = ceiling;
+
+      const otDay    = hourRate * 1.25 * hDay;
+      const otNight  = hourRate * 1.5  * hNight;
+      const total    = ot5 + otDay + otNight;
+
+      // Results — hide zeros
+      // res5
+      const res5Box = document.getElementById('res5Box');
+      if (ot5 === 0) {
+        res5Box.style.display = 'none';
+      } else {
+        res5Box.style.display = 'flex';
+        document.getElementById('res5Val').textContent = fmt(ot5);
+        const label5 = document.getElementById('res5Label');
+        label5.innerHTML = 'الإضافي 5%' + (capped ? ' <span class="cap-badge">مسقوف</span>' : '');
+        res5Box.classList.toggle('capped', capped);
+      }
+
+      // resDay
+      const resDayBox = document.getElementById('resDayBox');
+      if (otDay === 0) {
+        resDayBox.style.display = 'none';
+      } else {
+        resDayBox.style.display = 'flex';
+        document.getElementById('resDayVal').textContent = fmt(otDay);
+        resDayBox.classList.remove('capped');
+      }
+
+      // resNight
+      const resNightBox = document.getElementById('resNightBox');
+      if (otNight === 0) {
+        resNightBox.style.display = 'none';
+      } else {
+        resNightBox.style.display = 'flex';
+        document.getElementById('resNightVal').textContent = fmt(otNight);
+        resNightBox.classList.remove('capped');
+      }
+
+      document.getElementById('resTotalVal').textContent = fmt(total);
+
+      const shiftLabel = shift === 'morning' ? 'دوام صباحي = 225 ساعة شهرياً' : 'دوام ورادي = 180 ساعة شهرياً';
+
+      // Breakdown steps
+      let steps = '';
+
+      // Step 1 always
+      steps += `
+        <div class="breakdown-step">
+          <div class="step-num">١</div>
+          <div class="step-body">
+            <div class="step-title">حساب قيمة ساعة الأساس</div>
+            <div class="step-eq">الراتب المقطوع ÷ ${divisor} = قيمة ساعة الأساس</div>
+            <div class="step-val">${salary.toLocaleString('ar-SY')} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
+            <div class="step-note">(${shiftLabel})</div>
+          </div>
+        </div>`;
+
+      let stepNum = 2;
+
+      // Step for 5% only if h5 > 0
+      if (h5 > 0) {
+        steps += `
+        <div class="breakdown-step">
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي 5%</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات 5% = قيمة الإضافي 5%</div>
+            <div class="step-val">${fmt(hourRate)} × 1.25 × ${h5} = <strong>${fmt(rawOt5)} ${CURRENCY}</strong></div>
+            <div class="step-note">سقف الفئة ${category}: 5% × ${ceilFull.toLocaleString('ar-SY')} = <strong>${fmt(ceiling)} ${CURRENCY}</strong>${capped ? ' ← تم تطبيق السقف' : ''}</div>
+          </div>
+        </div>`;
+      }
+
+      // Step for day only if hDay > 0
+      if (hDay > 0) {
+        steps += `
+        <div class="breakdown-step">
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي النهاري</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات النهاري = قيمة الإضافي النهاري</div>
+            <div class="step-val">${fmt(hourRate)} × 1.25 × ${hDay} = <strong>${fmt(otDay)} ${CURRENCY}</strong></div>
+          </div>
+        </div>`;
+      }
+
+      // Step for night only if hNight > 0
+      if (hNight > 0) {
+        steps += `
+        <div class="breakdown-step">
+          <div class="step-num">${toArabicNum(stepNum++)}</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي الليلي</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.50 × عدد ساعات الليلي = قيمة الإضافي الليلي</div>
+            <div class="step-val">${fmt(hourRate)} × 1.50 × ${hNight} = <strong>${fmt(otNight)} ${CURRENCY}</strong></div>
+          </div>
+        </div>`;
+      }
+
+      // Total step always
+      steps += `
+        <div class="breakdown-step total-step">
+          <div class="step-num">${toArabicNum(stepNum)}</div>
+          <div class="step-body">
+            <div class="step-title">المجموع الكلي</div>
+            <div class="step-eq">إضافي 5% + إضافي نهاري + إضافي ليلي = المجموع</div>
+            <div class="step-val">${fmt(ot5)} + ${fmt(otDay)} + ${fmt(otNight)} = <strong>${fmt(total)} ${CURRENCY}</strong></div>
+          </div>
+        </div>`;
+
+      document.getElementById('breakdownList').innerHTML = steps;
+
+      // Show results with animation
+      const section = document.getElementById('resultsSection');
+      section.classList.remove('visible');
+      void section.offsetWidth;
+      setTimeout(() => {
+        section.classList.add('visible');
+        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }, 50);
+    }
+
+    // Arabic numerals helper
+    function toArabicNum(n) {
+      const nums = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      return String(n).split('').map(d => nums[parseInt(d)] || d).join('');
+    }
+
+    // Reset
+    function resetForm() {
+      document.getElementById('shift').value      = 'morning';
+      document.getElementById('category').value   = '1';
+      document.getElementById('salary').value     = '';
+      document.getElementById('hours5').value     = '';
+      document.getElementById('hoursDay').value   = '';
+      document.getElementById('hoursNight').value = '';
+      [1,2,3,4,5].forEach(c => {
+        document.getElementById('ceil-' + c).classList.toggle('active', c === 1);
+      });
+      const section = document.getElementById('resultsSection');
+      section.classList.remove('visible');
+      // close breakdown
+      breakdownOpen = false;
+      document.getElementById('breakdownBody').classList.remove('open');
+      document.getElementById('breakdownArrow').classList.remove('open');
     }
   </script>
 </body>
