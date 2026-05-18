@@ -1,270 +1,749 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#6c63ff" />
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
 
-  <!-- SEO -->
-  <title>اختبارات الشخصية – ما نوع شخصيتك؟</title>
-  <meta name="description" content="اكتشف نوع شخصيتك من خلال اختبار تفاعلي احترافي. تعرف على نقاط قوتك وضعفك والوظائف المناسبة لك." />
-  <meta name="keywords" content="اختبار شخصية, نوع الشخصية, تحليل الشخصية, MBTI عربي" />
-  <meta name="author" content="اختبارات الشخصية" />
-  <meta property="og:title" content="اختبارات الشخصية – ما نوع شخصيتك؟" />
-  <meta property="og:description" content="اكتشف نوع شخصيتك من خلال اختبار تفاعلي احترافي." />
-  <meta property="og:type" content="website" />
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface2: #f7f9fc;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --text2: #4a5568;
+  --text3: #718096;
+  --primary: #1e6fb5;
+  --primary-dark: #155a96;
+  --primary-light: #e8f1fb;
+  --accent: #0d9488;
+  --accent-light: #e0f5f4;
+  --warning: #d97706;
+  --warning-light: #fef3c7;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.05);
+  --radius: 14px;
+  --radius-sm: 9px;
+  --transition: .2s ease;
+  --font: 'Cairo', system-ui, sans-serif;
+}
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+.dark {
+  --bg: #0f1117;
+  --surface: #1a1f2e;
+  --surface2: #141824;
+  --border: #2d3448;
+  --text: #f0f4f8;
+  --text2: #a8b2c8;
+  --text3: #6b7694;
+  --primary: #4d9de0;
+  --primary-dark: #3a8bd4;
+  --primary-light: #1a2a3d;
+  --accent: #14b8a6;
+  --accent-light: #0d2926;
+  --warning: #fbbf24;
+  --warning-light: #1f1a0a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow: 0 4px 12px rgba(0,0,0,.4);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,.5);
+}
 
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="light-mode">
+html {
+  scroll-behavior: smooth;
+}
 
-  <!-- شاشة التحميل -->
-  <div id="loading-screen" class="loading-screen">
-    <div class="loading-content">
-      <div class="loading-logo">
-        <i class="fas fa-brain"></i>
-      </div>
-      <div class="loading-bar-wrapper">
-        <div class="loading-bar-fill" id="loading-bar"></div>
-      </div>
-      <p class="loading-text">جاري التحميل...</p>
-    </div>
-  </div>
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background .3s ease, color .3s ease;
+}
 
-  <!-- الهيدر -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <i class="fas fa-brain logo-icon"></i>
-        <span>شخصيتك</span>
-      </div>
-      <div class="header-actions">
-        <button id="sound-toggle" class="icon-btn" title="تشغيل / إيقاف الصوت" aria-label="الصوت">
-          <i class="fas fa-volume-up"></i>
-        </button>
-        <button id="theme-toggle" class="icon-btn" title="الوضع الليلي / النهاري" aria-label="السمة">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-  <!-- التطبيق الرئيسي -->
-  <main id="app">
+/* ── HEADER ── */
+.app-header {
+  background: linear-gradient(135deg, #0d4a8a 0%, #1e6fb5 50%, #2584d4 100%);
+  box-shadow: 0 4px 20px rgba(13,74,138,.35);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    <!-- ===== الصفحة الرئيسية ===== -->
-    <section id="home-section" class="section active">
-      <div class="hero-container">
-        <div class="hero-badge">اختبار مجاني</div>
-        <div class="hero-icon-wrapper">
-          <i class="fas fa-brain hero-brain"></i>
-          <div class="pulse-ring"></div>
-          <div class="pulse-ring delay-1"></div>
-        </div>
-        <h1 class="hero-title">ما نوع <span class="gradient-text">شخصيتك؟</span></h1>
-        <p class="hero-subtitle">
-          اكتشف شخصيتك الحقيقية من خلال اختبار علمي تفاعلي مصمم خصيصاً لك.
-          تعرّف على نقاط قوتك، وضعفك، والمسار المهني الأنسب لك.
-        </p>
+.dark .app-header {
+  background: linear-gradient(135deg, #0a1929 0%, #0d2d50 50%, #0f3a6e 100%);
+}
 
-        <div class="stats-row">
-          <div class="stat-card">
-            <span class="stat-num">5</span>
-            <span class="stat-label">شخصيات</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">15</span>
-            <span class="stat-label">سؤال</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num">5</span>
-            <span class="stat-label">دقائق</span>
-          </div>
-        </div>
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-        <button id="start-btn" class="btn btn-primary btn-large">
-          <i class="fas fa-play-circle"></i>
-          ابدأ الاختبار الآن
-        </button>
+.header-logo {
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+}
 
-        <div class="personality-preview">
-          <p class="preview-label">اكتشف إذا كنت...</p>
-          <div class="personality-tags">
-            <span class="p-tag" style="--c:#6c63ff">🦁 القائد</span>
-            <span class="p-tag" style="--c:#f59e0b">🎨 المبدع</span>
-            <span class="p-tag" style="--c:#10b981">🔬 المحلل</span>
-            <span class="p-tag" style="--c:#ef4444">🤝 الاجتماعي</span>
-            <span class="p-tag" style="--c:#3b82f6">📋 المنظم</span>
-          </div>
-        </div>
+.header-text {
+  flex: 1;
+}
 
-        <!-- آخر نتيجة محفوظة -->
-        <div id="saved-result-banner" class="saved-result-banner hidden">
-          <i class="fas fa-history"></i>
-          <span id="saved-result-text">لديك نتيجة محفوظة</span>
-          <button id="view-saved-btn" class="btn btn-secondary btn-sm">عرض النتيجة</button>
-        </div>
-      </div>
-    </section>
+.header-title {
+  font-size: clamp(1rem, 3.5vw, 1.35rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: .3px;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
 
-    <!-- ===== قسم الأسئلة ===== -->
-    <section id="quiz-section" class="section">
-      <div class="quiz-container">
+.header-sub {
+  font-size: .8rem;
+  color: rgba(255,255,255,.72);
+  margin-top: 2px;
+  font-weight: 400;
+}
 
-        <!-- شريط التقدم -->
-        <div class="progress-wrapper">
-          <div class="progress-info">
-            <span class="progress-label">التقدم</span>
-            <span id="progress-fraction" class="progress-fraction">1 / 15</span>
-          </div>
-          <div class="progress-bar-track">
-            <div id="progress-bar" class="progress-bar-fill"></div>
-          </div>
-        </div>
+.dark-toggle {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(4px);
+}
 
-        <!-- رقم السؤال -->
-        <div class="question-counter">
-          <span id="q-number" class="q-number">السؤال <b>1</b></span>
-          <div class="q-category-badge" id="q-category"></div>
-        </div>
+.dark-toggle:hover {
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.45);
+  transform: scale(1.05);
+}
 
-        <!-- بطاقة السؤال -->
-        <div id="question-card" class="question-card glass-card">
-          <div class="question-icon" id="q-icon"></div>
-          <h2 id="question-text" class="question-text"></h2>
+/* ── MAIN ── */
+.main-content {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-          <div id="options-container" class="options-container"></div>
-        </div>
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
 
-        <!-- أزرار التنقل -->
-        <div class="quiz-nav">
-          <button id="prev-btn" class="btn btn-ghost" disabled>
-            <i class="fas fa-arrow-right"></i>
-            السابق
-          </button>
-          <button id="next-btn" class="btn btn-primary" disabled>
-            التالي
-            <i class="fas fa-arrow-left"></i>
-          </button>
-        </div>
-      </div>
-    </section>
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
 
-    <!-- ===== صفحة النتائج ===== -->
-    <section id="result-section" class="section">
-      <div class="result-container">
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .3s, color .3s;
+}
 
-        <!-- رأس النتيجة -->
-        <div class="result-header">
-          <div class="result-emoji" id="result-emoji"></div>
-          <div class="result-type-badge" id="result-type-badge"></div>
-          <h1 id="result-title" class="result-title"></h1>
-          <p id="result-subtitle" class="result-subtitle"></p>
-        </div>
+.card-icon.accent {
+  background: var(--accent-light);
+  color: var(--accent);
+}
 
-        <!-- مقياس النقاط -->
-        <div class="scores-section glass-card">
-          <h3><i class="fas fa-chart-bar"></i> توزيع نقاطك</h3>
-          <div id="scores-chart" class="scores-chart"></div>
-        </div>
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
 
-        <!-- الوصف المفصل -->
-        <div class="result-details glass-card">
-          <h3><i class="fas fa-user-circle"></i> وصف شخصيتك</h3>
-          <p id="result-description" class="result-description"></p>
-        </div>
+/* ── FORM ── */
+.form-card > .form-grid {
+  padding: 24px;
+}
 
-        <!-- القوة والضعف -->
-        <div class="strengths-weaknesses-grid">
-          <div class="sw-card glass-card strengths-card">
-            <h3><i class="fas fa-star"></i> نقاط القوة</h3>
-            <ul id="result-strengths" class="sw-list"></ul>
-          </div>
-          <div class="sw-card glass-card weaknesses-card">
-            <h3><i class="fas fa-exclamation-triangle"></i> نقاط الضعف</h3>
-            <ul id="result-weaknesses" class="sw-list"></ul>
-          </div>
-        </div>
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 24px;
+}
 
-        <!-- أفضل الوظائف -->
-        <div class="careers-section glass-card">
-          <h3><i class="fas fa-briefcase"></i> الوظائف المناسبة لك</h3>
-          <div id="result-careers" class="careers-grid"></div>
-        </div>
+@media (max-width: 580px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+  .card-header {
+    padding: 16px;
+  }
+}
 
-        <!-- أزرار المشاركة وإعادة الاختبار -->
-        <div class="result-actions">
-          <button id="restart-btn" class="btn btn-primary btn-large">
-            <i class="fas fa-redo"></i>
-            إعادة الاختبار
-          </button>
-          <button id="share-btn" class="btn btn-secondary btn-large">
-            <i class="fas fa-share-alt"></i>
-            مشاركة النتيجة
-          </button>
-          <button id="copy-link-btn" class="btn btn-ghost btn-large">
-            <i class="fas fa-link"></i>
-            نسخ الرابط
-          </button>
-        </div>
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
 
-        <!-- مقارنة الشخصيات -->
-        <div class="compare-section glass-card">
-          <h3><i class="fas fa-exchange-alt"></i> الشخصيات الأخرى</h3>
-          <p class="compare-desc">تعرف على الشخصيات الأخرى وكيف تختلف عن شخصيتك</p>
-          <div id="other-personalities" class="other-personalities-grid"></div>
-        </div>
+.field-label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: color .3s;
+}
 
-        <!-- إحصائيات الاختبارات السابقة -->
-        <div id="history-section" class="history-section glass-card hidden">
-          <h3><i class="fas fa-history"></i> اختباراتك السابقة</h3>
-          <div id="history-list" class="history-list"></div>
-        </div>
+.label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  transition: background .3s;
+}
 
-      </div>
-    </section>
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 11px 14px;
+  font-family: var(--font);
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: all var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
 
-  </main>
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30,111,181,.13);
+  background: var(--surface);
+}
 
-  <!-- فوتر -->
-  <footer class="site-footer">
-    <p>صُنع بـ <i class="fas fa-heart" style="color:#ef4444"></i> لاكتشاف شخصيتك</p>
-  </footer>
+.form-input::placeholder {
+  color: var(--text3);
+  font-weight: 400;
+}
 
-  <!-- مودال المشاركة -->
-  <div id="share-modal" class="modal-overlay hidden">
-    <div class="modal glass-card">
-      <button class="modal-close" id="close-modal"><i class="fas fa-times"></i></button>
-      <h3><i class="fas fa-share-alt"></i> شارك نتيجتك</h3>
-      <p id="share-text-preview" class="share-text-preview"></p>
-      <div class="share-buttons">
-        <a id="share-whatsapp" href="#" target="_blank" class="share-btn whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> واتساب
-        </a>
-        <a id="share-twitter" href="#" target="_blank" class="share-btn twitter-btn">
-          <i class="fab fa-x-twitter"></i> تويتر
-        </a>
-        <a id="share-telegram" href="#" target="_blank" class="share-btn telegram-btn">
-          <i class="fab fa-telegram"></i> تيليجرام
-        </a>
-      </div>
-      <button id="copy-text-btn" class="btn btn-ghost" style="width:100%;margin-top:0.8rem">
-        <i class="fas fa-copy"></i> نسخ النص
-      </button>
-    </div>
-  </div>
+.form-input:hover,
+.form-select:hover {
+  border-color: var(--primary);
+}
 
-  <!-- Toast الإشعارات -->
-  <div id="toast-container" class="toast-container"></div>
+.select-wrapper {
+  position: relative;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.select-wrapper .form-select {
+  padding-left: 36px;
+  cursor: pointer;
+}
+
+.select-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  pointer-events: none;
+}
+
+/* RTL: icon goes on left side visually which is right in RTL */
+[dir="rtl"] .select-wrapper .form-select {
+  padding-left: 36px;
+  padding-right: 14px;
+}
+
+[dir="rtl"] .select-icon {
+  left: 12px;
+  right: auto;
+}
+
+/* ── CEILINGS TABLE ── */
+.ceilings-table {
+  margin: 0 24px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  transition: background .3s, border-color .3s;
+}
+
+@media (max-width: 580px) {
+  .ceilings-table {
+    margin: 0 16px 8px;
+  }
+}
+
+.ceilings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.ceilings-toggle:hover .ceilings-title {
+  color: var(--primary);
+}
+
+.ceilings-title {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+
+.ceilings-arrow {
+  color: var(--text3);
+  transition: transform .25s ease, color .2s;
+  flex-shrink: 0;
+}
+
+.ceilings-arrow.open {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+.ceilings-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ceiling-cell {
+  flex: 1;
+  min-width: 80px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.ceiling-cell.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.ceiling-cat {
+  font-size: .73rem;
+  font-weight: 700;
+  color: var(--text3);
+  margin-bottom: 3px;
+  transition: color .3s;
+}
+
+.ceiling-cell.active .ceiling-cat {
+  color: var(--primary);
+}
+
+.ceiling-val {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--text2);
+  direction: ltr;
+  transition: color .3s;
+}
+
+.ceiling-cell.active .ceiling-val {
+  color: var(--primary);
+}
+
+/* ── BUTTONS ── */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px 24px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 580px) {
+  .btn-row {
+    padding: 0 16px 16px;
+  }
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: .95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+  flex: 1;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(30,111,181,.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30,111,181,.45);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text2);
+  border: 1.5px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--border);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+/* ── RESULTS ── */
+.results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+.results-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+@media (max-width: 580px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-item {
+  background: var(--surface);
+  padding: 20px 22px;
+  transition: background .15s;
+  position: relative;
+}
+
+.result-item:hover {
+  background: var(--surface2);
+}
+
+.result-item.capped {
+  background: var(--warning-light);
+}
+
+.result-item.capped:hover {
+  background: var(--warning-light);
+}
+
+.result-label {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  transition: color .3s;
+}
+
+.cap-badge {
+  font-size: .67rem;
+  background: var(--warning);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.result-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  direction: ltr;
+  text-align: right;
+  line-height: 1.2;
+  transition: color .3s;
+}
+
+.currency {
+  font-size: .8rem;
+  font-weight: 600;
+  opacity: .7;
+  margin-right: 4px;
+}
+
+.result-formula {
+  font-size: .75rem;
+  color: var(--text3);
+  margin-top: 6px;
+  direction: ltr;
+  text-align: right;
+  font-family: monospace;
+  transition: color .3s;
+}
+
+.total-box {
+  margin: 1px 0 0;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.total-label {
+  font-size: .95rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.85);
+}
+
+.total-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  direction: ltr;
+  text-align: left;
+}
+
+.total-currency {
+  font-size: .85rem;
+  font-weight: 600;
+  opacity: .8;
+  margin-right: 6px;
+}
+
+/* ── BREAKDOWN ── */
+.breakdown-card .breakdown-list {
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+@media (max-width: 580px) {
+  .breakdown-card .breakdown-list {
+    padding: 12px 16px 16px;
+  }
+}
+
+.breakdown-step {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  transition: border-color .3s;
+}
+
+.breakdown-step:last-child {
+  border-bottom: none;
+}
+
+.breakdown-step.total-step {
+  background: var(--primary-light);
+  margin: 0 -24px;
+  padding: 18px 24px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border-bottom: none;
+}
+
+@media (max-width: 580px) {
+  .breakdown-step.total-step {
+    margin: 0 -16px;
+    padding: 18px 16px;
+  }
+}
+
+.step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: .9rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background .3s, color .3s;
+}
+
+.total-step .step-num {
+  background: var(--primary);
+  color: #fff;
+}
+
+.step-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.step-title {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color .3s;
+}
+
+.step-eq {
+  font-size: .8rem;
+  color: var(--text3);
+  background: var(--surface2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border-right: 3px solid var(--border);
+  transition: all .3s;
+}
+
+.step-val {
+  font-size: .87rem;
+  color: var(--text2);
+  direction: ltr;
+  text-align: right;
+  font-family: monospace;
+  transition: color .3s;
+}
+
+.step-val strong {
+  color: var(--primary);
+  font-family: var(--font);
+}
+
+.step-note {
+  font-size: .78rem;
+  color: var(--text3);
+  font-style: italic;
+  transition: color .3s;
+}
+
+/* ── FOOTER ── */
+.app-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background .3s, border-color .3s;
+}
+
+.app-footer p {
+  font-size: .83rem;
+  color: var(--text3);
+  transition: color .3s;
+}
+
+.footer-name {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.footer-copy {
+  font-size: .75rem !important;
+  opacity: .7;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* ── NUMBER INPUTS ── */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 0;
+}
+input[type=number] { -moz-appearance: textfield; }
+
+/* ── OPTION COLORS ── */
+option {
+  background: var(--surface);
+  color: var(--text);
+}
