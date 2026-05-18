@@ -1,749 +1,759 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --bg: #f0f4f8;
-  --surface: #ffffff;
-  --surface2: #f7f9fc;
-  --border: #e2e8f0;
-  --text: #1a202c;
-  --text2: #4a5568;
-  --text3: #718096;
-  --primary: #1e6fb5;
-  --primary-dark: #155a96;
-  --primary-light: #e8f1fb;
-  --accent: #0d9488;
-  --accent-light: #e0f5f4;
-  --warning: #d97706;
-  --warning-light: #fef3c7;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-  --shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.05);
-  --radius: 14px;
-  --radius-sm: 9px;
-  --transition: .2s ease;
-  --font: 'Cairo', system-ui, sans-serif;
-}
-
-.dark {
-  --bg: #0f1117;
-  --surface: #1a1f2e;
-  --surface2: #141824;
-  --border: #2d3448;
-  --text: #f0f4f8;
-  --text2: #a8b2c8;
-  --text3: #6b7694;
-  --primary: #4d9de0;
-  --primary-dark: #3a8bd4;
-  --primary-light: #1a2a3d;
-  --accent: #14b8a6;
-  --accent-light: #0d2926;
-  --warning: #fbbf24;
-  --warning-light: #1f1a0a;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
-  --shadow: 0 4px 12px rgba(0,0,0,.4);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,.5);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  min-height: 100vh;
-  transition: background .3s ease, color .3s ease;
-}
-
-.app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── HEADER ── */
-.app-header {
-  background: linear-gradient(135deg, #0d4a8a 0%, #1e6fb5 50%, #2584d4 100%);
-  box-shadow: 0 4px 20px rgba(13,74,138,.35);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.dark .app-header {
-  background: linear-gradient(135deg, #0a1929 0%, #0d2d50 50%, #0f3a6e 100%);
-}
-
-.header-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 18px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.header-logo {
-  flex-shrink: 0;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
-}
-
-.header-text {
-  flex: 1;
-}
-
-.header-title {
-  font-size: clamp(1rem, 3.5vw, 1.35rem);
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: .3px;
-  line-height: 1.3;
-  text-shadow: 0 1px 3px rgba(0,0,0,.2);
-}
-
-.header-sub {
-  font-size: .8rem;
-  color: rgba(255,255,255,.72);
-  margin-top: 2px;
-  font-weight: 400;
-}
-
-.dark-toggle {
-  flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,.25);
-  background: rgba(255,255,255,.12);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-  backdrop-filter: blur(4px);
-}
-
-.dark-toggle:hover {
-  background: rgba(255,255,255,.22);
-  border-color: rgba(255,255,255,.45);
-  transform: scale(1.05);
-}
-
-/* ── MAIN ── */
-.main-content {
-  flex: 1;
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 32px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-/* ── CARDS ── */
-.card {
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 20px 24px 16px;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
-}
-
-.card-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--primary-light);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background .3s, color .3s;
-}
-
-.card-icon.accent {
-  background: var(--accent-light);
-  color: var(--accent);
-}
-
-.card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-/* ── FORM ── */
-.form-card > .form-grid {
-  padding: 24px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  padding: 24px;
-}
-
-@media (max-width: 580px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 16px;
-  }
-  .card-header {
-    padding: 16px;
-  }
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.field-label {
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--text2);
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  transition: color .3s;
-}
-
-.label-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  flex-shrink: 0;
-  transition: background .3s;
-}
-
-.form-input,
-.form-select {
-  width: 100%;
-  padding: 11px 14px;
-  font-family: var(--font);
-  font-size: .92rem;
-  font-weight: 500;
-  color: var(--text);
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  outline: none;
-  transition: all var(--transition);
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.form-input:focus,
-.form-select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(30,111,181,.13);
-  background: var(--surface);
-}
-
-.form-input::placeholder {
-  color: var(--text3);
-  font-weight: 400;
-}
-
-.form-input:hover,
-.form-select:hover {
-  border-color: var(--primary);
-}
-
-.select-wrapper {
-  position: relative;
-}
-
-.select-wrapper .form-select {
-  padding-left: 36px;
-  cursor: pointer;
-}
-
-.select-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text3);
-  pointer-events: none;
-}
-
-/* RTL: icon goes on left side visually which is right in RTL */
-[dir="rtl"] .select-wrapper .form-select {
-  padding-left: 36px;
-  padding-right: 14px;
-}
-
-[dir="rtl"] .select-icon {
-  left: 12px;
-  right: auto;
-}
-
-/* ── CEILINGS TABLE ── */
-.ceilings-table {
-  margin: 0 24px 8px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  transition: background .3s, border-color .3s;
-}
-
-@media (max-width: 580px) {
-  .ceilings-table {
-    margin: 0 16px 8px;
-  }
-}
-
-.ceilings-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 0;
-}
-
-.ceilings-toggle:hover .ceilings-title {
-  color: var(--primary);
-}
-
-.ceilings-title {
-  font-size: .75rem;
-  font-weight: 700;
-  color: var(--text3);
-  letter-spacing: .3px;
-  text-transform: uppercase;
-  transition: color .2s;
-}
-
-.ceilings-arrow {
-  color: var(--text3);
-  transition: transform .25s ease, color .2s;
-  flex-shrink: 0;
-}
-
-.ceilings-arrow.open {
-  transform: rotate(180deg);
-  color: var(--primary);
-}
-
-.ceilings-row {
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.ceiling-cell {
-  flex: 1;
-  min-width: 80px;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 10px;
-  text-align: center;
-  transition: all var(--transition);
-}
-
-.ceiling-cell.active {
-  border-color: var(--primary);
-  background: var(--primary-light);
-}
-
-.ceiling-cat {
-  font-size: .73rem;
-  font-weight: 700;
-  color: var(--text3);
-  margin-bottom: 3px;
-  transition: color .3s;
-}
-
-.ceiling-cell.active .ceiling-cat {
-  color: var(--primary);
-}
-
-.ceiling-val {
-  font-size: .78rem;
-  font-weight: 800;
-  color: var(--text2);
-  direction: ltr;
-  transition: color .3s;
-}
-
-.ceiling-cell.active .ceiling-val {
-  color: var(--primary);
-}
-
-/* ── BUTTONS ── */
-.btn-row {
-  display: flex;
-  gap: 12px;
-  padding: 0 24px 24px;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 580px) {
-  .btn-row {
-    padding: 0 16px 16px;
-  }
-}
-
-.btn-primary,
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font);
-  font-size: .95rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
-  transition: all var(--transition);
-  flex: 1;
-  min-width: 140px;
-  justify-content: center;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(30,111,181,.35);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30,111,181,.45);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-.btn-secondary {
-  background: var(--surface2);
-  color: var(--text2);
-  border: 1.5px solid var(--border);
-}
-
-.btn-secondary:hover {
-  background: var(--border);
-  color: var(--text);
-  transform: translateY(-1px);
-}
-
-/* ── RESULTS ── */
-.results-section {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .45s ease, transform .45s ease;
-}
-
-.results-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.results-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  margin: 0;
-}
-
-@media (max-width: 580px) {
-  .results-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.result-item {
-  background: var(--surface);
-  padding: 20px 22px;
-  transition: background .15s;
-  position: relative;
-}
-
-.result-item:hover {
-  background: var(--surface2);
-}
-
-.result-item.capped {
-  background: var(--warning-light);
-}
-
-.result-item.capped:hover {
-  background: var(--warning-light);
-}
-
-.result-label {
-  font-size: .78rem;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  transition: color .3s;
-}
-
-.cap-badge {
-  font-size: .67rem;
-  background: var(--warning);
-  color: #fff;
-  padding: 2px 7px;
-  border-radius: 20px;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.result-value {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--primary);
-  direction: ltr;
-  text-align: right;
-  line-height: 1.2;
-  transition: color .3s;
-}
-
-.currency {
-  font-size: .8rem;
-  font-weight: 600;
-  opacity: .7;
-  margin-right: 4px;
-}
-
-.result-formula {
-  font-size: .75rem;
-  color: var(--text3);
-  margin-top: 6px;
-  direction: ltr;
-  text-align: right;
-  font-family: monospace;
-  transition: color .3s;
-}
-
-.total-box {
-  margin: 1px 0 0;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 22px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.total-label {
-  font-size: .95rem;
-  font-weight: 700;
-  color: rgba(255,255,255,.85);
-}
-
-.total-value {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #ffffff;
-  direction: ltr;
-  text-align: left;
-}
-
-.total-currency {
-  font-size: .85rem;
-  font-weight: 600;
-  opacity: .8;
-  margin-right: 6px;
-}
-
-/* ── BREAKDOWN ── */
-.breakdown-card .breakdown-list {
-  padding: 16px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-@media (max-width: 580px) {
-  .breakdown-card .breakdown-list {
-    padding: 12px 16px 16px;
-  }
-}
-
-.breakdown-step {
-  display: flex;
-  gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--border);
-  transition: border-color .3s;
-}
-
-.breakdown-step:last-child {
-  border-bottom: none;
-}
-
-.breakdown-step.total-step {
-  background: var(--primary-light);
-  margin: 0 -24px;
-  padding: 18px 24px;
-  border-radius: 0 0 var(--radius) var(--radius);
-  border-bottom: none;
-}
-
-@media (max-width: 580px) {
-  .breakdown-step.total-step {
-    margin: 0 -16px;
-    padding: 18px 16px;
-  }
-}
-
-.step-num {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: .9rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-  transition: background .3s, color .3s;
-}
-
-.total-step .step-num {
-  background: var(--primary);
-  color: #fff;
-}
-
-.step-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.step-title {
-  font-size: .92rem;
-  font-weight: 700;
-  color: var(--text);
-  transition: color .3s;
-}
-
-.step-eq {
-  font-size: .8rem;
-  color: var(--text3);
-  background: var(--surface2);
-  padding: 6px 10px;
-  border-radius: 6px;
-  border-right: 3px solid var(--border);
-  transition: all .3s;
-}
-
-.step-val {
-  font-size: .87rem;
-  color: var(--text2);
-  direction: ltr;
-  text-align: right;
-  font-family: monospace;
-  transition: color .3s;
-}
-
-.step-val strong {
-  color: var(--primary);
-  font-family: var(--font);
-}
-
-.step-note {
-  font-size: .78rem;
-  color: var(--text3);
-  font-style: italic;
-  transition: color .3s;
-}
-
-/* ── FOOTER ── */
-.app-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 20px 24px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: background .3s, border-color .3s;
-}
-
-.app-footer p {
-  font-size: .83rem;
-  color: var(--text3);
-  transition: color .3s;
-}
-
-.footer-name {
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.footer-copy {
-  font-size: .75rem !important;
-  opacity: .7;
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 7px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text3); }
-
-/* ── NUMBER INPUTS ── */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  opacity: 0;
-}
-input[type=number] { -moz-appearance: textfield; }
-
-/* ── OPTION COLORS ── */
-option {
-  background: var(--surface);
-  color: var(--text);
-}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حاسبة الإضافي — مديرية غاز جنوب المنطقة الوسطى</title>
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── VARIABLES ── */
+    :root {
+      --bg: #f0f4f8;
+      --surface: #ffffff;
+      --surface2: #f7f9fc;
+      --border: #e2e8f0;
+      --text: #1a202c;
+      --text2: #4a5568;
+      --text3: #718096;
+      --primary: #1e6fb5;
+      --primary-dark: #155a96;
+      --primary-light: #e8f1fb;
+      --accent: #0d9488;
+      --accent-light: #e0f5f4;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --shadow: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+      --radius: 14px;
+      --radius-sm: 9px;
+      --font: 'Segoe UI', Tahoma, Arial, sans-serif;
+    }
+    .dark {
+      --bg: #0f1117;
+      --surface: #1a1f2e;
+      --surface2: #141824;
+      --border: #2d3448;
+      --text: #f0f4f8;
+      --text2: #a8b2c8;
+      --text3: #6b7694;
+      --primary: #4d9de0;
+      --primary-dark: #3a8bd4;
+      --primary-light: #1a2a3d;
+      --accent: #14b8a6;
+      --accent-light: #0d2926;
+      --warning: #fbbf24;
+      --warning-light: #1f1a0a;
+      --shadow: 0 4px 12px rgba(0,0,0,.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background .3s, color .3s;
+    }
+
+    /* ── HEADER ── */
+    .app-header {
+      background: linear-gradient(135deg, #0d4a8a 0%, #1e6fb5 50%, #2584d4 100%);
+      box-shadow: 0 4px 20px rgba(13,74,138,.35);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .dark .app-header {
+      background: linear-gradient(135deg, #0a1929 0%, #0d2d50 50%, #0f3a6e 100%);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-logo {
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.3));
+    }
+    .header-logo svg { display: block; }
+    .header-text { flex: 1; }
+    .header-title {
+      font-size: clamp(1rem, 3.5vw, 1.35rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      text-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .header-sub { font-size: .8rem; color: rgba(255,255,255,.72); margin-top: 2px; }
+    .dark-toggle {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .dark-toggle:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.45); transform: scale(1.05); }
+
+    /* ── MAIN ── */
+    .main-content {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+      transition: background .3s, border-color .3s;
+    }
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, color .3s;
+    }
+    .card-icon.accent { background: var(--accent-light); color: var(--accent); }
+    .card-title { font-size: 1.05rem; font-weight: 700; color: var(--text); transition: color .3s; }
+
+    /* ── FORM ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 24px;
+    }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; gap: 14px; padding: 16px; }
+      .card-header { padding: 16px; }
+    }
+    .field-group { display: flex; flex-direction: column; gap: 7px; }
+    .field-label {
+      font-size: .82rem; font-weight: 600; color: var(--text2);
+      display: flex; align-items: center; gap: 7px;
+      transition: color .3s;
+    }
+    .label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex-shrink: 0;
+      transition: background .3s;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: var(--font);
+      font-size: .92rem; font-weight: 500;
+      color: var(--text);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: all .2s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30,111,181,.13);
+    }
+    .form-input:hover, .form-select:hover { border-color: var(--primary); }
+    .form-input::placeholder { color: var(--text3); font-weight: 400; }
+    .select-wrapper { position: relative; }
+    .select-wrapper .form-select { padding-left: 36px; cursor: pointer; }
+    .select-icon {
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3); pointer-events: none;
+    }
+
+    /* ── CEILINGS ── */
+    .ceilings-table {
+      margin: 0 24px 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: background .3s, border-color .3s;
+    }
+    @media (max-width: 580px) { .ceilings-table { margin: 0 16px 8px; } }
+    .ceilings-toggle {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: none; border: none;
+      cursor: pointer; padding: 0; width: 100%;
+    }
+    .ceilings-toggle:hover .ceilings-title { color: var(--primary); }
+    .ceilings-title {
+      font-size: .75rem; font-weight: 700;
+      color: var(--text3);
+      letter-spacing: .3px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .ceilings-arrow {
+      color: var(--text3);
+      transition: transform .25s ease, color .2s;
+      flex-shrink: 0;
+    }
+    .ceilings-arrow.open { transform: rotate(180deg); color: var(--primary); }
+    .ceilings-row {
+      margin-top: 10px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .ceiling-cell {
+      flex: 1; min-width: 80px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 8px 10px;
+      text-align: center;
+      transition: all .2s;
+    }
+    .ceiling-cell.active { border-color: var(--primary); background: var(--primary-light); }
+    .ceiling-cat { font-size: .73rem; font-weight: 700; color: var(--text3); margin-bottom: 3px; transition: color .3s; }
+    .ceiling-cell.active .ceiling-cat { color: var(--primary); }
+    .ceiling-val { font-size: .78rem; font-weight: 800; color: var(--text2); direction: ltr; transition: color .3s; }
+    .ceiling-cell.active .ceiling-val { color: var(--primary); }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex; gap: 12px;
+      padding: 0 24px 24px; flex-wrap: wrap;
+    }
+    @media (max-width: 580px) { .btn-row { padding: 0 16px 16px; } }
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font); font-size: .95rem; font-weight: 700;
+      cursor: pointer; border: none;
+      transition: all .2s;
+      flex: 1; min-width: 140px; justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(30,111,181,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,111,181,.45); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: var(--surface2); color: var(--text2);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--border); color: var(--text); transform: translateY(-1px); }
+
+    /* ── RESULTS ── */
+    .results-section {
+      display: flex; flex-direction: column; gap: 24px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .results-section.visible { opacity: 1; transform: translateY(0); }
+    .results-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); margin: 0;
+    }
+    @media (max-width: 580px) { .results-grid { grid-template-columns: 1fr; } }
+    .result-item { background: var(--surface); padding: 20px 22px; transition: background .15s; }
+    .result-item:hover { background: var(--surface2); }
+    .result-item.capped { background: var(--warning-light); }
+    .result-item.capped:hover { background: var(--warning-light); }
+    .result-label {
+      font-size: .78rem; font-weight: 600; color: var(--text3);
+      text-transform: uppercase; letter-spacing: .5px;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px; transition: color .3s;
+    }
+    .cap-badge {
+      font-size: .67rem; background: var(--warning); color: #fff;
+      padding: 2px 7px; border-radius: 20px;
+      font-weight: 700; letter-spacing: 0; text-transform: none;
+    }
+    .result-value {
+      font-size: 1.5rem; font-weight: 800; color: var(--primary);
+      direction: ltr; text-align: right; line-height: 1.2; transition: color .3s;
+    }
+    .currency { font-size: .8rem; font-weight: 600; opacity: .7; margin-right: 4px; }
+    .result-formula {
+      font-size: .75rem; color: var(--text3);
+      margin-top: 6px; direction: ltr; text-align: right;
+      font-family: monospace; transition: color .3s;
+    }
+    .total-box {
+      margin: 1px 0 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 22px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    .total-label { font-size: .95rem; font-weight: 700; color: rgba(255,255,255,.85); }
+    .total-value { font-size: 1.8rem; font-weight: 800; color: #fff; direction: ltr; text-align: left; }
+    .total-currency { font-size: .85rem; font-weight: 600; opacity: .8; margin-right: 6px; }
+
+    /* ── BREAKDOWN ── */
+    .breakdown-list { padding: 16px 24px 24px; display: flex; flex-direction: column; }
+    @media (max-width: 580px) { .breakdown-list { padding: 12px 16px 16px; } }
+    .breakdown-step {
+      display: flex; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .breakdown-step:last-child { border-bottom: none; }
+    .breakdown-step.total-step {
+      background: var(--primary-light);
+      margin: 0 -24px; padding: 18px 24px;
+      border-radius: 0 0 var(--radius) var(--radius);
+      border-bottom: none;
+    }
+    @media (max-width: 580px) {
+      .breakdown-step.total-step { margin: 0 -16px; padding: 18px 16px; }
+    }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      font-size: .9rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px; transition: background .3s, color .3s;
+    }
+    .total-step .step-num { background: var(--primary); color: #fff; }
+    .step-body { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .step-title { font-size: .92rem; font-weight: 700; color: var(--text); transition: color .3s; }
+    .step-eq {
+      font-size: .8rem; color: var(--text3);
+      background: var(--surface2); padding: 6px 10px;
+      border-radius: 6px; border-right: 3px solid var(--border);
+      transition: all .3s;
+    }
+    .step-val {
+      font-size: .87rem; color: var(--text2);
+      direction: ltr; text-align: right; font-family: monospace;
+      transition: color .3s;
+    }
+    .step-val strong { color: var(--primary); font-family: var(--font); }
+    .step-note { font-size: .78rem; color: var(--text3); font-style: italic; transition: color .3s; }
+
+    /* ── FOOTER ── */
+    .app-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 20px 24px; text-align: center;
+      display: flex; flex-direction: column; gap: 4px;
+      transition: background .3s, border-color .3s;
+    }
+    .app-footer p { font-size: .83rem; color: var(--text3); transition: color .3s; }
+    .footer-name { color: var(--primary); font-weight: 700; }
+    .footer-copy { font-size: .75rem !important; opacity: .7; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { opacity: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    option { background: var(--surface); color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="21" cy="21" r="21" fill="url(#grad)"/>
+          <path d="M13 28l8-14 8 14H13z" fill="white" opacity="0.9"/>
+          <circle cx="21" cy="17" r="3" fill="white" opacity="0.7"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#1e6fb5"/>
+              <stop offset="1" stop-color="#0d4a8a"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="header-text">
+        <h1 class="header-title">مديرية غاز جنوب المنطقة الوسطى</h1>
+        <p class="header-sub">نظام حساب الإضافي للموظفين</p>
+      </div>
+      <button class="dark-toggle" id="darkToggle" title="الوضع الليلي">
+        <svg id="iconMoon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg id="iconSun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main-content">
+
+    <!-- Form Card -->
+    <div class="card form-card">
+      <div class="card-header">
+        <span class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </span>
+        <h2 class="card-title">بيانات الموظف</h2>
+      </div>
+
+      <div class="form-grid">
+        <!-- طبيعة الدوام -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>طبيعة الدوام</label>
+          <div class="select-wrapper">
+            <select class="form-select" id="shift">
+              <option value="morning">صباحي</option>
+              <option value="wardee">وردي</option>
+            </select>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+        <!-- الفئة -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>الفئة</label>
+          <div class="select-wrapper">
+            <select class="form-select" id="category">
+              <option value="1">فئة 1</option>
+              <option value="2">فئة 2</option>
+              <option value="3">فئة 3</option>
+              <option value="4">فئة 4</option>
+              <option value="5">فئة 5</option>
+            </select>
+            <svg class="select-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ceilings collapsible -->
+      <div class="ceilings-table">
+        <button class="ceilings-toggle" id="ceilingsToggle">
+          <span class="ceilings-title">سقوف الفئات (الحد الأعلى للإضافي 5%)</span>
+          <svg id="ceilingsArrow" class="ceilings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="ceilings-row" id="ceilingsRow" style="display:none">
+          <div class="ceiling-cell active" id="ceil-1"><div class="ceiling-cat">فئة 1</div><div class="ceiling-val">1,057 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-2"><div class="ceiling-cat">فئة 2</div><div class="ceiling-val">932.5 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-3"><div class="ceiling-cat">فئة 3</div><div class="ceiling-val">889 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-4"><div class="ceiling-cat">فئة 4</div><div class="ceiling-val">889 ل.س</div></div>
+          <div class="ceiling-cell" id="ceil-5"><div class="ceiling-cat">فئة 5</div><div class="ceiling-val">823.5 ل.س</div></div>
+        </div>
+      </div>
+
+      <div class="form-grid" style="padding-top:0">
+        <!-- الراتب -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>الراتب المقطوع (ليرة سورية)</label>
+          <input class="form-input" type="number" id="salary" min="0" placeholder="أدخل الراتب المقطوع"/>
+        </div>
+        <!-- ساعات 5% -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات 5%</label>
+          <input class="form-input" type="number" id="hours5" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+        <!-- ساعات النهاري -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات النهاري</label>
+          <input class="form-input" type="number" id="hoursDay" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+        <!-- ساعات الليلي -->
+        <div class="field-group">
+          <label class="field-label"><span class="label-dot"></span>عدد ساعات الليلي</label>
+          <input class="form-input" type="number" id="hoursNight" min="0" placeholder="أدخل عدد الساعات"/>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="8" y1="10" x2="16" y2="10"/>
+            <line x1="8" y1="14" x2="12" y2="14"/>
+          </svg>
+          احسب الإضافي
+        </button>
+        <button class="btn-secondary" onclick="resetForm()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+          </svg>
+          إعادة تعيين
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section" id="resultsSection">
+
+      <!-- Results Card -->
+      <div class="card results-card">
+        <div class="card-header">
+          <span class="card-icon accent">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </span>
+          <h2 class="card-title">نتائج الحساب</h2>
+        </div>
+        <div class="results-grid">
+          <div class="result-item" id="res5Item">
+            <div class="result-label" id="res5Label">قيمة الإضافي 5%</div>
+            <div class="result-value"><span id="res5Val">0.00</span> <span class="currency">ل.س</span></div>
+            <div class="result-formula" id="res5Formula"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">قيمة الإضافي النهاري</div>
+            <div class="result-value"><span id="resDayVal">0.00</span> <span class="currency">ل.س</span></div>
+            <div class="result-formula" id="resDayFormula"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-label">قيمة الإضافي الليلي</div>
+            <div class="result-value"><span id="resNightVal">0.00</span> <span class="currency">ل.س</span></div>
+            <div class="result-formula" id="resNightFormula"></div>
+          </div>
+          <div class="result-item" style="display:flex;align-items:center;justify-content:center;background:var(--surface2)">
+            <div style="text-align:center">
+              <div style="font-size:.75rem;font-weight:600;color:var(--text3);margin-bottom:6px;">سقف الفئة المختارة</div>
+              <div class="result-value" style="font-size:1.1rem" id="resCeilingVal">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="total-box">
+          <div class="total-label">المجموع الكلي للإضافي</div>
+          <div class="total-value"><span id="resTotalVal">0.00</span> <span class="total-currency">ليرة سورية</span></div>
+        </div>
+      </div>
+
+      <!-- Breakdown Card -->
+      <div class="card breakdown-card">
+        <div class="card-header">
+          <span class="card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </span>
+          <h2 class="card-title">طريقة الحساب بالتفصيل</h2>
+        </div>
+        <div class="breakdown-list" id="breakdownList"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="app-footer">
+    <p>تصميم وتطوير <span class="footer-name">William Alhasan</span></p>
+    <p class="footer-copy">© <span id="year"></span> مديرية غاز جنوب المنطقة الوسطى — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    // ── Constants ──
+    const CEILINGS = { 1: 21140, 2: 18650, 3: 17780, 4: 17780, 5: 16470 };
+    const CURRENCY = 'ل.س';
+    const CURRENCY_FULL = 'ليرة سورية';
+
+    // ── Init ──
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Dark Mode ──
+    let dark = false;
+    document.getElementById('darkToggle').addEventListener('click', () => {
+      dark = !dark;
+      document.body.classList.toggle('dark', dark);
+      document.getElementById('iconMoon').style.display = dark ? 'none' : 'block';
+      document.getElementById('iconSun').style.display  = dark ? 'block' : 'none';
+      document.getElementById('darkToggle').title = dark ? 'الوضع النهاري' : 'الوضع الليلي';
+    });
+
+    // ── Ceilings Toggle ──
+    let ceilingsOpen = false;
+    document.getElementById('ceilingsToggle').addEventListener('click', () => {
+      ceilingsOpen = !ceilingsOpen;
+      document.getElementById('ceilingsRow').style.display = ceilingsOpen ? 'flex' : 'none';
+      document.getElementById('ceilingsArrow').classList.toggle('open', ceilingsOpen);
+    });
+
+    // ── Highlight active ceiling on category change ──
+    document.getElementById('category').addEventListener('change', function () {
+      const val = this.value;
+      [1,2,3,4,5].forEach(c => {
+        document.getElementById('ceil-' + c).classList.toggle('active', String(c) === val);
+      });
+    });
+
+    // ── Format Number ──
+    function fmt(n) {
+      return n.toLocaleString('ar-SY', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // ── Calculate ──
+    function calculate() {
+      const shift    = document.getElementById('shift').value;
+      const category = parseInt(document.getElementById('category').value);
+      const salary   = parseFloat(document.getElementById('salary').value)   || 0;
+      const h5       = parseFloat(document.getElementById('hours5').value)    || 0;
+      const hDay     = parseFloat(document.getElementById('hoursDay').value)  || 0;
+      const hNight   = parseFloat(document.getElementById('hoursNight').value)|| 0;
+
+      const divisor  = shift === 'morning' ? 180 : 225;
+      const hourRate = salary / divisor;
+
+      const ceilFull = CEILINGS[category];
+      const ceiling  = ceilFull * 0.05;
+      let ot5        = hourRate * 1.25 * h5;
+      const capped   = ot5 > ceiling;
+      if (capped) ot5 = ceiling;
+
+      const otDay    = hourRate * 1.25 * hDay;
+      const otNight  = hourRate * 1.5  * hNight;
+      const total    = ot5 + otDay + otNight;
+
+      // ── Results ──
+      document.getElementById('res5Val').textContent    = fmt(ot5);
+      document.getElementById('resDayVal').textContent  = fmt(otDay);
+      document.getElementById('resNightVal').textContent= fmt(otNight);
+      document.getElementById('resTotalVal').textContent= fmt(total);
+      document.getElementById('resCeilingVal').textContent = fmt(ceiling) + ' ' + CURRENCY;
+
+      // 5% cap badge
+      const label5 = document.getElementById('res5Label');
+      label5.innerHTML = 'قيمة الإضافي 5%' + (capped
+        ? ' <span class="cap-badge">مسقوف</span>' : '');
+      const item5 = document.getElementById('res5Item');
+      item5.classList.toggle('capped', capped);
+
+      // 5% formula
+      document.getElementById('res5Formula').textContent = capped
+        ? 'سقف الفئة ' + category + ': 5% × ' + ceilFull.toLocaleString('ar-SY')
+        : fmt(hourRate) + ' × 1.25 × ' + h5;
+      document.getElementById('resDayFormula').textContent  = fmt(hourRate) + ' × 1.25 × ' + hDay;
+      document.getElementById('resNightFormula').textContent= fmt(hourRate) + ' × 1.50 × ' + hNight;
+
+      // ── Breakdown ──
+      const rawOt5 = hourRate * 1.25 * h5;
+      document.getElementById('breakdownList').innerHTML = `
+        <div class="breakdown-step">
+          <div class="step-num">١</div>
+          <div class="step-body">
+            <div class="step-title">حساب قيمة ساعة الأساس</div>
+            <div class="step-eq">الراتب المقطوع ÷ ${divisor} = قيمة ساعة الأساس</div>
+            <div class="step-val">${salary.toLocaleString('ar-SY')} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
+            <div class="step-note">(${shift === 'morning' ? 'دوام صباحي = 180 ساعة شهرياً' : 'دوام وردي = 225 ساعة شهرياً'})</div>
+          </div>
+        </div>
+        <div class="breakdown-step">
+          <div class="step-num">٢</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي 5%</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات 5% = قيمة الإضافي 5%</div>
+            <div class="step-val">${fmt(hourRate)} × 1.25 × ${h5} = <strong>${fmt(rawOt5)} ${CURRENCY}</strong></div>
+            <div class="step-note">سقف الفئة ${category}: 5% × ${ceilFull.toLocaleString('ar-SY')} = <strong>${fmt(ceiling)} ${CURRENCY}</strong>${capped ? ' ← تم تطبيق السقف' : ''}</div>
+          </div>
+        </div>
+        <div class="breakdown-step">
+          <div class="step-num">٣</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي النهاري</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات النهاري = قيمة الإضافي النهاري</div>
+            <div class="step-val">${fmt(hourRate)} × 1.25 × ${hDay} = <strong>${fmt(otDay)} ${CURRENCY}</strong></div>
+          </div>
+        </div>
+        <div class="breakdown-step">
+          <div class="step-num">٤</div>
+          <div class="step-body">
+            <div class="step-title">حساب الإضافي الليلي</div>
+            <div class="step-eq">قيمة ساعة الأساس × 1.50 × عدد ساعات الليلي = قيمة الإضافي الليلي</div>
+            <div class="step-val">${fmt(hourRate)} × 1.50 × ${hNight} = <strong>${fmt(otNight)} ${CURRENCY}</strong></div>
+          </div>
+        </div>
+        <div class="breakdown-step total-step">
+          <div class="step-num">٥</div>
+          <div class="step-body">
+            <div class="step-title">المجموع الكلي</div>
+            <div class="step-eq">إضافي 5% + إضافي نهاري + إضافي ليلي = المجموع</div>
+            <div class="step-val">${fmt(ot5)} + ${fmt(otDay)} + ${fmt(otNight)} = <strong>${fmt(total)} ${CURRENCY}</strong></div>
+          </div>
+        </div>`;
+
+      // ── Show results with scroll ──
+      const section = document.getElementById('resultsSection');
+      section.classList.remove('visible');
+      void section.offsetWidth; // reflow
+      setTimeout(() => {
+        section.classList.add('visible');
+        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }, 50);
+    }
+
+    // ── Reset ──
+    function resetForm() {
+      document.getElementById('shift').value    = 'morning';
+      document.getElementById('category').value = '1';
+      document.getElementById('salary').value   = '';
+      document.getElementById('hours5').value   = '';
+      document.getElementById('hoursDay').value = '';
+      document.getElementById('hoursNight').value = '';
+      // reset ceiling highlights
+      [1,2,3,4,5].forEach(c => {
+        document.getElementById('ceil-' + c).classList.toggle('active', c === 1);
+      });
+      const section = document.getElementById('resultsSection');
+      section.classList.remove('visible');
+    }
+  </script>
+</body>
+</html>
