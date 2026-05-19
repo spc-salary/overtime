@@ -475,9 +475,10 @@
 
     .result-box-amount { display: flex; align-items: baseline; gap: 5px; direction: ltr; }
     .result-box-value {
-      font-size: 1.55rem; font-weight: 900; color: var(--primary);
+      font-size: 1.75rem; font-weight: 900; color: var(--primary);
       transition: color var(--t) var(--ease); line-height: 1;
-      letter-spacing: -.02em;
+      letter-spacing: .02em;
+      font-variant-numeric: tabular-nums;
     }
     .result-box-currency {
       font-size: .78rem; font-weight: 700; color: var(--text3);
@@ -508,9 +509,10 @@
       color: rgba(255,255,255,.82); position: relative;
     }
     .total-value {
-      font-size: 1.85rem; font-weight: 900; color: #fff; direction: ltr;
-      letter-spacing: -.03em; position: relative;
-      text-shadow: 0 2px 10px rgba(0,0,0,.18);
+      font-size: 2.2rem; font-weight: 900; color: #fff; direction: ltr;
+      letter-spacing: .03em; position: relative;
+      text-shadow: 0 2px 14px rgba(0,0,0,.22);
+      font-variant-numeric: tabular-nums;
     }
     .total-currency {
       font-size: .82rem; font-weight: 700; opacity: .75; margin-right: 6px;
@@ -919,7 +921,7 @@
 
     // Format Number
     function fmt(n) {
-      return n.toLocaleString('ar-SY', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return n.toFixed(2);
     }
 
     // Breakdown toggle
@@ -1011,7 +1013,7 @@
           <div class="step-body">
             <div class="step-title">حساب قيمة ساعة الأساس</div>
             <div class="step-eq">الراتب المقطوع ÷ ${divisor} = قيمة ساعة الأساس</div>
-            <div class="step-val">${salary.toLocaleString('ar-SY')} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
+            <div class="step-val">${salary} ÷ ${divisor} = <strong>${fmt(hourRate)} ${CURRENCY}</strong></div>
             <div class="step-note">(${shiftLabel})</div>
           </div>
         </div>`;
@@ -1026,7 +1028,7 @@
             <div class="step-title">حساب الإضافي 5%</div>
             <div class="step-eq">قيمة ساعة الأساس × 1.25 × عدد ساعات 5% = قيمة الإضافي 5%</div>
             <div class="step-val">${fmt(hourRate)} × 1.25 × ${h5} = <strong>${fmt(rawOt5)} ${CURRENCY}</strong></div>
-            <div class="step-note">سقف الفئة ${category}: 5% × ${ceilFull.toLocaleString('ar-SY')} = <strong>${fmt(ceiling)} ${CURRENCY}</strong>${capped ? ' ← تم تطبيق السقف' : ''}</div>
+            <div class="step-note">سقف الفئة ${category}: 5% × ${ceilFull} = <strong>${fmt(ceiling)} ${CURRENCY}</strong>${capped ? ' ← تم تطبيق السقف' : ''}</div>
           </div>
         </div>`;
       }
