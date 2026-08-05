@@ -921,7 +921,9 @@
 var API_URL = 'https://script.google.com/macros/s/AKfycbysT8uOHtQ9yK0lpmbjFt1rRNmFAaLcoqvQX8qZ5baqXDt_G4wRSxR2aFmRb3ihI7T6/exec';
 
 /* ==========================================
-   ★ apiRun — بديل google.script.run مع fetch + Timeout + Retry
+      ★ apiRun — بديل google.script.run
+   يستخدم GET + URL params لتجاوز CORS Preflight
+   (طلبات GET البسيطة لا تحتاج OPTIONS preflight)
    ========================================== */
 function apiRun(action, args, onSuccess, onFailure, opts) {
     opts = opts || {};
@@ -936,12 +938,11 @@ function apiRun(action, args, onSuccess, onFailure, opts) {
         var timer = setTimeout(function() {
             aborted = true;
             controller.abort();
-        }, timeout);
-
-        fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: action, args: args || [] }),
+                /* نبني الـ URL مع action + args كـ query parameters */
+        var url = API_URL
+            + '&action=' + encodeURIComponent(action)
+            + '&args='   + encodeURIComponent(JSON.stringify(args || []));
+        fetch(url, { method: 'GET', signal: controller.signal })
             signal: controller.signal
         })
         .then(function(resp) {
